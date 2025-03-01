@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0213a0cb8e9d7c8e",
+        "id": "e4370fd7f2c9ffe4",
         "type": "tabs",
         "children": [
           {
-            "id": "907bfa92742ab6db",
+            "id": "9b10c3bacd90dffa",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -160,11 +160,15 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "907bfa92742ab6db",
+  "active": "9b10c3bacd90dffa",
   "lastOpenFiles": [
+    "To-do/написать заметки.md",
+    "Заметки/Backend/Http Methods.md",
+    "Заметки/Backend/Dapper.md",
+    "Заметки/Backend/IOptionsMonitor IOptionsSnapshot.md",
+    "Заметки/Backend/IDisposable IAsyncDisposable.md",
     "Заметки/Backend/DI injection types.md",
     "Заметки/Backend/HttpOnly Cookie.md",
-    "To-do/написать заметки.md",
     "Заметки/Backend/Unit Testing (xUnit).md",
     "Заметки/Backend/Clean Architecture.md",
     "Заметки/Backend/gitignore ASP NET Core.md",
@@ -185,10 +189,6 @@
     "Jwt Policy.md",
     "Заметки/Backend/CORS.md",
     "Заметки/Backend/AutoMapper.md",
-    "Заметки/Backend/Serilog.md",
-    "Заметки/Frontend/BEM methodology.md",
-    "Заметки/Frontend/Vite.md",
-    "CSS.md",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",
     "Заметки/Frontend",

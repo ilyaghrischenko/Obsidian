@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "1fd42f58ebdfef67",
+        "id": "51feca87bf629127",
         "type": "tabs",
         "children": [
           {
-            "id": "ef7ed07c1d256093",
+            "id": "eb21700060da9c68",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "To-do/написать заметки.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "написать заметки"
             }
           }
         ]
@@ -156,7 +160,7 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "ef7ed07c1d256093",
+  "active": "eb21700060da9c68",
   "lastOpenFiles": [
     "To-do/написать заметки.md",
     "Заметки/Backend/Unit Testing (xUnit).md",

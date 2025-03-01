@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e4370fd7f2c9ffe4",
+        "id": "b1407b6c41abedcc",
         "type": "tabs",
         "children": [
           {
-            "id": "9b10c3bacd90dffa",
+            "id": "baa4de49f1beea2a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,8 +20,19 @@
               "icon": "lucide-file",
               "title": "написать заметки"
             }
+          },
+          {
+            "id": "7392482fe1034c13",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Граф"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +89,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 297.5
   },
   "right": {
     "id": "4225d03be9b72dbb",
@@ -160,35 +171,35 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "9b10c3bacd90dffa",
+  "active": "7392482fe1034c13",
   "lastOpenFiles": [
     "To-do/написать заметки.md",
+    "Заметки/Backend/Clean Architecture.md",
+    "Заметки/Backend/Unit Testing (xUnit).md",
+    "Заметки/Backend/Middleware.md",
+    "Заметки/Frontend/BEM methodology.md",
     "Заметки/Backend/Http Methods.md",
+    "Заметки/Backend/Fluent Validation.md",
+    "Заметки/Backend/Rate Limiter.md",
+    "Заметки/Backend/Response Compression.md",
+    "Заметки/Backend/ASP.NET Core Pipeline.md",
     "Заметки/Backend/Dapper.md",
+    "Заметки/Backend/Fluent Assertions.md",
     "Заметки/Backend/IOptionsMonitor IOptionsSnapshot.md",
     "Заметки/Backend/IDisposable IAsyncDisposable.md",
     "Заметки/Backend/DI injection types.md",
     "Заметки/Backend/HttpOnly Cookie.md",
-    "Заметки/Backend/Unit Testing (xUnit).md",
-    "Заметки/Backend/Clean Architecture.md",
     "Заметки/Backend/gitignore ASP NET Core.md",
-    "Заметки/Backend/Rate Limiter.md",
-    "Заметки/Backend/ASP.NET Core Pipeline.md",
     "Pipeline.md",
     "Заметки/Backend/JWT.md",
     "Заметки/Backend/Patterns/Builder.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/SCSS.md",
-    "Заметки/Backend/Fluent Assertions.md",
-    "Заметки/Backend/Middleware.md",
     "Заметки/Backend/SOLID.md",
-    "Заметки/Backend/Fluent Validation.md",
     "Заметки/Backend/IOptions.md",
-    "Заметки/Backend/Response Compression.md",
     "Заметки/Backend/JWT Policy.md",
     "Jwt Policy.md",
     "Заметки/Backend/CORS.md",
-    "Заметки/Backend/AutoMapper.md",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",
     "Заметки/Frontend",

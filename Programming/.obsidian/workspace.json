@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "7dd1218efd882406",
+        "id": "ee93589a317bd574",
         "type": "tabs",
         "children": [
           {
-            "id": "c53c407c7f3cef06",
+            "id": "05caceebb50cbcf8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -160,9 +160,19 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "c53c407c7f3cef06",
+  "active": "05caceebb50cbcf8",
   "lastOpenFiles": [
+    "Заметки/Backend/Patterns/Factory.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/Patterns/CQRS.md",
+    "Заметки/Backend/Без названия.md",
+    "Заметки/Backend/CQRS + Mediator.md",
+    "Заметки/Backend/Patterns/Mediator.md",
+    "Заметки/Backend/IOptions.md",
+    "Заметки/Backend/JWT Policy.md",
+    "Заметки/Backend/JWT.md",
+    "Заметки/Backend/Dapper.md",
+    "Заметки/Backend/IDisposable IAsyncDisposable.md",
     "Заметки/Backend/Clean Architecture.md",
     "Заметки/Backend/Unit Testing (xUnit).md",
     "Заметки/Backend/Middleware.md",
@@ -172,23 +182,13 @@
     "Заметки/Backend/Rate Limiter.md",
     "Заметки/Backend/Response Compression.md",
     "Заметки/Backend/ASP.NET Core Pipeline.md",
-    "Заметки/Backend/Dapper.md",
     "Заметки/Backend/Fluent Assertions.md",
     "Заметки/Backend/IOptionsMonitor IOptionsSnapshot.md",
-    "Заметки/Backend/IDisposable IAsyncDisposable.md",
     "Заметки/Backend/DI injection types.md",
     "Заметки/Backend/HttpOnly Cookie.md",
     "Заметки/Backend/gitignore ASP NET Core.md",
     "Pipeline.md",
-    "Заметки/Backend/JWT.md",
-    "Заметки/Backend/Patterns/Builder.md",
     "Заметки/Backend/Patterns",
-    "Заметки/Frontend/SCSS.md",
-    "Заметки/Backend/SOLID.md",
-    "Заметки/Backend/IOptions.md",
-    "Заметки/Backend/JWT Policy.md",
-    "Jwt Policy.md",
-    "Заметки/Backend/CORS.md",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",
     "Заметки/Frontend",

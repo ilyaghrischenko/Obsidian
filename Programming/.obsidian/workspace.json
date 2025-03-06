@@ -4,25 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b1407b6c41abedcc",
+        "id": "7dd1218efd882406",
         "type": "tabs",
         "children": [
           {
-            "id": "baa4de49f1beea2a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "To-do/написать заметки.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "написать заметки"
-            }
-          },
-          {
-            "id": "7392482fe1034c13",
+            "id": "c53c407c7f3cef06",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -35,8 +21,7 @@
               "title": "написать заметки"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -175,7 +160,7 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "7392482fe1034c13",
+  "active": "c53c407c7f3cef06",
   "lastOpenFiles": [
     "To-do/написать заметки.md",
     "Заметки/Backend/Clean Architecture.md",

@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "ee93589a317bd574",
+        "id": "b48a4b7f62fd5e36",
         "type": "tabs",
         "children": [
           {
-            "id": "05caceebb50cbcf8",
+            "id": "8531b3550e6cca69",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "To-do/написать заметки.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "написать заметки"
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -74,7 +70,8 @@
               "title": "Закладки"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -160,12 +157,18 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "05caceebb50cbcf8",
+  "active": "8531b3550e6cca69",
   "lastOpenFiles": [
-    "Заметки/Backend/Patterns/Factory.md",
+    "Заметки/Backend/Patterns/Strategy.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/TypeScript.md",
+    "Заметки/Backend/TDD - Test Driven Development.md",
+    "Заметки/Backend/Events.md",
+    "Заметки/Backend/Delegates.md",
+    "Заметки/Backend/WebApplicationBuilderExtensions.md",
+    "React.md",
+    "Заметки/Backend/Patterns/Factory.md",
     "Заметки/Backend/Patterns/CQRS.md",
-    "Заметки/Backend/Без названия.md",
     "Заметки/Backend/CQRS + Mediator.md",
     "Заметки/Backend/Patterns/Mediator.md",
     "Заметки/Backend/IOptions.md",
@@ -182,12 +185,6 @@
     "Заметки/Backend/Rate Limiter.md",
     "Заметки/Backend/Response Compression.md",
     "Заметки/Backend/ASP.NET Core Pipeline.md",
-    "Заметки/Backend/Fluent Assertions.md",
-    "Заметки/Backend/IOptionsMonitor IOptionsSnapshot.md",
-    "Заметки/Backend/DI injection types.md",
-    "Заметки/Backend/HttpOnly Cookie.md",
-    "Заметки/Backend/gitignore ASP NET Core.md",
-    "Pipeline.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",

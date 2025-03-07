@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To-do/написать заметки.md",
+                "file": "Заметки/Backend/ASP.NET Core Pipeline.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "написать заметки"
+              "title": "ASP.NET Core Pipeline"
             }
           }
         ]
@@ -162,8 +162,8 @@
   },
   "active": "8531b3550e6cca69",
   "lastOpenFiles": [
-    "Заметки/Backend/Patterns/Strategy.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/Patterns/Strategy.md",
     "Заметки/Backend/TypeScript.md",
     "Заметки/Backend/TDD - Test Driven Development.md",
     "Заметки/Backend/Events.md",

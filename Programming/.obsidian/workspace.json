@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a912a4c679e025bd",
+        "id": "1360749a51621ac1",
         "type": "tabs",
         "children": [
           {
-            "id": "7fbe76273849e93a",
+            "id": "5f876a1795b5e346",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Граф"
+              "icon": "lucide-file",
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -156,8 +156,10 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "7fbe76273849e93a",
+  "active": "5f876a1795b5e346",
   "lastOpenFiles": [
+    "Заметки/Backend/CORS.md",
+    "Заметки/Backend/WebApplicationBuilderExtensions.md",
     "To-do/написать заметки.md",
     "Заметки/Backend/Concurrent коллекции.md",
     "Заметки/Backend/IOptions.md",
@@ -170,8 +172,6 @@
     "Заметки/Backend/Middleware.md",
     "Заметки/Backend/Clean Architecture.md",
     "Заметки/Backend/AutoMapper.md",
-    "Заметки/Backend/WebApplicationBuilderExtensions.md",
-    "Заметки/Backend/CORS.md",
     "Заметки/Backend/Patterns/Builder.md",
     "Заметки/Backend/Модификаторы доступа.md",
     "Заметки/Backend/Scrum.md",

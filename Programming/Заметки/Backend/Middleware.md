@@ -64,6 +64,77 @@ app.Run(async (context) =>
 app.Run();
 ```
 
+## **Условный (**
+
+## **Conditional**
+
+## **) Middleware**
+
+  
+
+Иногда требуется выполнять Middleware **только при выполнении определённых условий** (например, для определённого пути, заголовка или среды). В ASP.NET Core это можно реализовать с помощью app.UseWhen(...).
+
+  
+
+### **Пример: Middleware только для** 
+
+### **/api**
+
+###  **запросов**
+
+``` csharp
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api"), appBuilder =>
+{
+    appBuilder.UseMiddleware<ApiLoggingMiddleware>();
+});
+```
+
+### **Пример: Middleware только в** 
+
+### **Development**
+
+###  **окружении**
+
+``` csharp
+if (app.Environment.IsDevelopment())
+{
+    app.UseMiddleware<DevelopmentOnlyMiddleware>();
+}
+```
+
+### **Пример: Встроенный Middleware только при определённом заголовке**
+
+``` csharp
+app.UseWhen(ctx => ctx.Request.Headers.ContainsKey("X-Debug-Mode"), appBuilder =>
+{
+    appBuilder.Use(async (context, next) =>
+    {
+        Console.WriteLine("X-Debug-Mode enabled");
+        await next();
+    });
+});
+```
+
+### **Пример с** 
+
+### **MapWhen**
+
+###  **(для ветвления конвейера)**
+
+``` csharp
+app.MapWhen(context => context.Request.Query.ContainsKey("test"), appBuilder =>
+{
+    appBuilder.Run(async context =>
+    {
+        await context.Response.WriteAsync("This is a test branch.");
+    });
+});
+```
+
+---
+
+UseWhen и MapWhen — это удобные способы сделать конвейер гибким, настраивая Middleware для определённых условий без загрязнения основного потока обработки.
+
 ## Использование встроенных Middleware
 ASP.NET Core предоставляет ряд встроенных Middleware:
 

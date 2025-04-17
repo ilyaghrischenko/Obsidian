@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To-do/написать заметки.md",
+                "file": "To-do/сделать проекты.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "написать заметки"
+              "title": "сделать проекты"
             }
           }
         ]
@@ -162,8 +162,8 @@
   },
   "active": "efd33627ae012bf0",
   "lastOpenFiles": [
-    "To-do/сделать проекты.md",
     "To-do/написать заметки.md",
+    "To-do/сделать проекты.md",
     "Заметки/Backend/HealthChecks.md",
     "2025-04-17.md",
     "Заметки/Books/Чистый код",

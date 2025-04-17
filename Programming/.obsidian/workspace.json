@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "34f0e754113be1de",
+        "id": "ad59962154a0137c",
         "type": "tabs",
         "children": [
           {
-            "id": "956d7997d6d40436",
+            "id": "d61880343898f1a5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Заметки/Backend/CORS.md",
+                "file": "Заметки/Backend/HealthChecks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CORS"
+              "title": "HealthChecks"
             }
           }
         ]
@@ -160,17 +160,21 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "956d7997d6d40436",
+  "active": "d61880343898f1a5",
   "lastOpenFiles": [
+    "2025-04-17.md",
     "To-do/написать заметки.md",
+    "Заметки/Books/Чистый код",
+    "Заметки/Backend/Books/Untitled.md",
+    "Заметки/Books",
+    "Заметки/Backend/HealthChecks.md",
+    "Заметки/Backend/CORS.md",
     "Заметки/Backend/Middleware.md",
     "Заметки/Backend/CancellationToken.md",
-    "Заметки/Backend/Untitled.md",
     "Entity Framework Core.md",
     "Заметки/Backend/BackgroundService.md",
     "Заметки/Backend/FastEndpoints.md",
     "Заметки/Backend/IHostedService.md",
-    "Заметки/Backend/CORS.md",
     "Заметки/Backend/Concurrent коллекции.md",
     "Заметки/Backend/Модификаторы доступа.md",
     "Заметки/Backend/WebApplicationBuilderExtensions.md",
@@ -186,8 +190,6 @@
     "Заметки/Backend/Patterns/Builder.md",
     "Заметки/Backend/Scrum.md",
     "Заметки/Backend/CQRS + Mediator.md",
-    "Заметки/Backend/Patterns/Strategy.md",
-    "Заметки/Backend/TypeScript.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",
@@ -195,7 +197,6 @@
     "Без названия",
     "Заметки",
     "To-do",
-    "Frontend",
-    "Backend"
+    "Frontend"
   ]
 }

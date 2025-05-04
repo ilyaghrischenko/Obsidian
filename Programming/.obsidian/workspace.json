@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To-do/сделать проекты.md",
+                "file": "To-do/написать заметки.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "сделать проекты"
+              "title": "написать заметки"
             }
           }
         ]
@@ -160,10 +160,11 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "efd33627ae012bf0",
+  "active": "5e231f0affa37b55",
   "lastOpenFiles": [
-    "To-do/написать заметки.md",
+    "Заметки/Azure",
     "To-do/сделать проекты.md",
+    "To-do/написать заметки.md",
     "Заметки/Backend/HealthChecks.md",
     "2025-04-17.md",
     "Заметки/Books/Чистый код",
@@ -189,7 +190,6 @@
     "Заметки/Backend/Clean Architecture.md",
     "Заметки/Backend/AutoMapper.md",
     "Заметки/Backend/Patterns/Builder.md",
-    "Заметки/Backend/Scrum.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",

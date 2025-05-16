@@ -83,7 +83,7 @@ public void Run([QueueTrigger("myqueue", Connection = "AzureWebJobsStorage")] st
 
 ### 4. **Blob Trigger**
 
-Запускает функцию при загрузке/изменении файла в Blob Storage.
+Запускает функцию при загрузке/изменении файла в [[Blob Storage]].
 
 Пример:
 

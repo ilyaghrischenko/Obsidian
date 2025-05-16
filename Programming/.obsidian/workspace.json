@@ -46,7 +46,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +78,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "LINQ",
+                "query": "U",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -99,7 +99,8 @@
               "title": "Закладки"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -185,10 +186,10 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "f9c5ca80b58a8372",
+  "active": "490889b2a9164cc3",
   "lastOpenFiles": [
-    "To-do/написать заметки.md",
     "Заметки/Backend/env.md",
+    "To-do/написать заметки.md",
     "Заметки/Azure/Blob Storage.md",
     "Заметки/Azure/Azure Functions.md",
     "Заметки/Backend/LINQ.md",

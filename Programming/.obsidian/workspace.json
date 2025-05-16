@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "45f559618f290f93",
+        "id": "3577187af8dcde51",
         "type": "tabs",
         "children": [
           {
-            "id": "e4e31ce42fe59d1d",
+            "id": "cfda300964ada4bd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "To-do/сделать проекты.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "сделать проекты"
+              "title": "New tab"
             }
           }
         ]
@@ -160,12 +156,12 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "e4e31ce42fe59d1d",
+  "active": "cfda300964ada4bd",
   "lastOpenFiles": [
+    "To-do/сделать проекты.md",
     "To-do/написать заметки.md",
     "Заметки/Backend/Patterns/Result.md",
     "Заметки/Azure/Основные службы.md",
-    "To-do/сделать проекты.md",
     "Заметки/Backend/env.md",
     "Заметки/Backend/Hangfire.md",
     "Заметки/Azure/Blob Storage.md",

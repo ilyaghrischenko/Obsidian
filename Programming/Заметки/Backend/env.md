@@ -52,6 +52,25 @@ string? connectionString = Environment.GetEnvironmentVariable("BLOB_STORAGE");
 - Лучше загружать `.env` **в начале запуска приложения**, до использования этих переменных.
     
 
+## Удобный extension для работы с Environment variables
+
+``` csharp
+public static class EnvironmentExtensions
+{
+    public static string GetEnvironmentVariableOrThrowException(string key)
+    {
+        var value = Environment.GetEnvironmentVariable(key);
+
+        if (value is null)
+        {
+            throw new EnvVariableNotFoundException("Environment variable not found: " + key, key);
+        }
+
+        return value;
+    }
+}
+```
+
 ## Пример использования в репозитории
 
 ```csharp

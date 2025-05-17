@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "3577187af8dcde51",
+        "id": "43546df1ceaa1e47",
         "type": "tabs",
         "children": [
           {
-            "id": "cfda300964ada4bd",
+            "id": "813beab3d99ca13e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "To-do/написать заметки.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "написать заметки"
             }
           }
         ]
@@ -40,7 +44,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Файловый менеджер"
             }
           },
           {
@@ -147,25 +151,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "cfda300964ada4bd",
+  "active": "813beab3d99ca13e",
   "lastOpenFiles": [
-    "To-do/сделать проекты.md",
+    "Заметки/Backend/gitignore ASP NET Core.md",
+    "Заметки/Backend/Очереди (Azure Queue, RabbitMQ, etc...).md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/env.md",
+    "Заметки/Azure/Azure Functions.md",
+    "Заметки/Backend/AutoMapper.md",
+    "Untitled.canvas",
+    "2025-05-17.md",
+    "To-do/сделать проекты.md",
     "Заметки/Backend/Patterns/Result.md",
     "Заметки/Azure/Основные службы.md",
-    "Заметки/Backend/env.md",
     "Заметки/Backend/Hangfire.md",
     "Заметки/Azure/Blob Storage.md",
-    "Заметки/Azure/Azure Functions.md",
     "Заметки/Backend/LINQ.md",
     "Заметки/Backend/Модификаторы доступа.md",
     "Заметки/Azure",
@@ -183,10 +192,6 @@
     "Заметки/Backend/IHostedService.md",
     "Заметки/Backend/Concurrent коллекции.md",
     "Заметки/Backend/WebApplicationBuilderExtensions.md",
-    "Заметки/Backend/IOptions.md",
-    "Заметки/Backend/IOptionsMonitor IOptionsSnapshot.md",
-    "Заметки/Backend/JWT.md",
-    "Заметки/Backend/HttpOnly Cookie.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",

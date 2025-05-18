@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "43546df1ceaa1e47",
+        "id": "b4fbd26cca6281fb",
         "type": "tabs",
         "children": [
           {
-            "id": "813beab3d99ca13e",
+            "id": "fc0b962e660657b4",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "U",
+                "query": "FastE",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "Search"
+              "title": "Поиск"
             }
           },
           {
@@ -160,18 +160,26 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "813beab3d99ca13e",
+  "active": "fc0b962e660657b4",
   "lastOpenFiles": [
+    "Заметки/Backend/From атрибуты.md",
+    "Заметки/Backend/Vertical Sliced Architecture (VSA).md",
+    "Заметки/Backend/Http Methods.md",
+    "To-do/написать заметки.md",
+    "Заметки/Backend/WebApplicationBuilderExtensions.md",
+    "Заметки/Backend/ASP.NET Core MVC.md",
+    "Заметки/Backend/FastEndpoints.md",
+    "Заметки/Azure/Azure Functions.md",
+    "Заметки/Backend/TypeScript.md",
+    "Заметки/Backend/SignalR + Hubs.md",
+    "Заметки/Backend/Patterns/Result.md",
     "Заметки/Backend/gitignore ASP NET Core.md",
     "Заметки/Backend/Очереди (Azure Queue, RabbitMQ, etc...).md",
-    "To-do/написать заметки.md",
     "Заметки/Backend/env.md",
-    "Заметки/Azure/Azure Functions.md",
     "Заметки/Backend/AutoMapper.md",
     "Untitled.canvas",
     "2025-05-17.md",
     "To-do/сделать проекты.md",
-    "Заметки/Backend/Patterns/Result.md",
     "Заметки/Azure/Основные службы.md",
     "Заметки/Backend/Hangfire.md",
     "Заметки/Azure/Blob Storage.md",
@@ -184,14 +192,6 @@
     "Заметки/Backend/Books/Untitled.md",
     "Заметки/Books",
     "Заметки/Backend/CORS.md",
-    "Заметки/Backend/Middleware.md",
-    "Заметки/Backend/CancellationToken.md",
-    "Entity Framework Core.md",
-    "Заметки/Backend/BackgroundService.md",
-    "Заметки/Backend/FastEndpoints.md",
-    "Заметки/Backend/IHostedService.md",
-    "Заметки/Backend/Concurrent коллекции.md",
-    "Заметки/Backend/WebApplicationBuilderExtensions.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",

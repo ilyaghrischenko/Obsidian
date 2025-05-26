@@ -100,7 +100,7 @@ builder.Services.AddAutoMapper(typeof(NewsMappingProfile).Assembly);
 
 ### 9. `AddCors`
 
-Разрешает [[CORS]] для [[React]]-приложения:
+Разрешает [[CORS]] для [[React (TypeScript)]]-приложения:
 
 ```csharp
 builder.Services.AddCors(options =>

@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "b4fbd26cca6281fb",
+        "id": "0fbc3085dd6105eb",
         "type": "tabs",
         "children": [
           {
-            "id": "fc0b962e660657b4",
+            "id": "ed3550d078359208",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "To-do/написать заметки.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "написать заметки"
+              "title": "Новая вкладка"
             }
           }
         ]
@@ -53,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "FastE",
+                "query": "Even",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -160,17 +156,25 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "fc0b962e660657b4",
+  "active": "ed3550d078359208",
   "lastOpenFiles": [
+    "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
+    "Заметки/Backend/Events.md",
+    "Заметки/Backend/DDD",
+    "Заметки/Azure/Основные службы.md",
+    "Entity Framework Core.md",
+    "To-do/написать заметки.md",
+    "Заметки/Backend/TypeScript.md",
+    "Заметки/Azure/Azure Functions.md",
+    "Заметки/Backend/CQRS + Mediator.md",
+    "Заметки/Backend/WebApplicationBuilderExtensions.md",
+    "Заметки/Frontend/React (TypeScript).md",
+    "Заметки/Frontend/Vite.md",
     "Заметки/Backend/From атрибуты.md",
     "Заметки/Backend/Vertical Sliced Architecture (VSA).md",
     "Заметки/Backend/Http Methods.md",
-    "To-do/написать заметки.md",
-    "Заметки/Backend/WebApplicationBuilderExtensions.md",
     "Заметки/Backend/ASP.NET Core MVC.md",
     "Заметки/Backend/FastEndpoints.md",
-    "Заметки/Azure/Azure Functions.md",
-    "Заметки/Backend/TypeScript.md",
     "Заметки/Backend/SignalR + Hubs.md",
     "Заметки/Backend/Patterns/Result.md",
     "Заметки/Backend/gitignore ASP NET Core.md",
@@ -180,24 +184,15 @@
     "Untitled.canvas",
     "2025-05-17.md",
     "To-do/сделать проекты.md",
-    "Заметки/Azure/Основные службы.md",
     "Заметки/Backend/Hangfire.md",
-    "Заметки/Azure/Blob Storage.md",
-    "Заметки/Backend/LINQ.md",
-    "Заметки/Backend/Модификаторы доступа.md",
     "Заметки/Azure",
-    "Заметки/Backend/HealthChecks.md",
-    "2025-04-17.md",
     "Заметки/Books/Чистый код",
-    "Заметки/Backend/Books/Untitled.md",
     "Заметки/Books",
-    "Заметки/Backend/CORS.md",
     "Заметки/Backend/Patterns",
     "Заметки/Frontend/BEM methodology",
     "Заметки/Backend",
     "Заметки/Frontend",
     "Без названия",
-    "Заметки",
-    "To-do"
+    "Заметки"
   ]
 }

@@ -63,7 +63,7 @@ public void Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, FunctionConte
 
 ---
 
-### 3. **Queue Trigger (Azure Storage Queue)** ✅
+### 3. **Queue Trigger (Azure Storage Queue) [[Очереди (Azure Queue, RabbitMQ, etc...)]]** ✅
 
 Запускает функцию при поступлении сообщения в очередь.
 

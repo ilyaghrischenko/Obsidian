@@ -11,10 +11,14 @@
             "id": "ed3550d078359208",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "To-do/написать заметки.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "написать заметки"
             }
           }
         ]

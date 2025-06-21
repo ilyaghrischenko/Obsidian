@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "8d8c5d2e09c55182",
+    "id": "4ae5575c6a820f1a",
     "type": "split",
     "children": [
       {
-        "id": "3b28b8c2246596ce",
+        "id": "ba4905f0fb560f71",
         "type": "tabs",
         "children": [
           {
-            "id": "79df3429799b6414",
+            "id": "976296321ea360ee",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -23,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "f5b41154ef40a7f6",
+    "id": "128c35021a140182",
     "type": "split",
     "children": [
       {
-        "id": "e894d65868e22b51",
+        "id": "347230220b589bbe",
         "type": "tabs",
         "children": [
           {
-            "id": "5e231f0affa37b55",
+            "id": "ef5ff400555e8163",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,12 +44,12 @@
             }
           },
           {
-            "id": "490889b2a9164cc3",
+            "id": "1bfe5b133d60411e",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "Even",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "bcac23479f7958e3",
+            "id": "3d3fb8728edd5d98",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -74,23 +74,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 297.5
+    "width": 300
   },
   "right": {
-    "id": "4225d03be9b72dbb",
+    "id": "94189bf4b7132391",
     "type": "split",
     "children": [
       {
-        "id": "7a18b163124dcb97",
+        "id": "4f5c906aa6ae8f72",
         "type": "tabs",
         "children": [
           {
-            "id": "cf9515bf8e289c66",
+            "id": "c0966402f6650d1a",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Rozetka/ТЗ.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,11 +99,11 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Обратные ссылки для ТЗ"
+              "title": "Обратные ссылки"
             }
           },
           {
-            "id": "a269121a7d08128f",
+            "id": "78704dff615e6396",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -117,24 +116,30 @@
             }
           },
           {
-            "id": "c968dec327a47247",
+            "id": "46f652d8992d2d87",
             "type": "leaf",
             "state": {
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Теги"
             }
           },
           {
-            "id": "a9c8af45f3c0d133",
+            "id": "67789202be66488c",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-list",
               "title": "Структура"
             }
@@ -153,49 +158,16 @@
       "canvas:Создать новый холст": false,
       "daily-notes:Сегодняшняя заметка": false,
       "templates:Вставить шаблон": false,
-      "command-palette:Открыть палитру команд": false,
-      "github-sync:Sync with Remote": false
+      "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "5e231f0affa37b55",
+  "active": "976296321ea360ee",
   "lastOpenFiles": [
-    "To-do/сделать проекты.md",
-    "To-do/написать заметки.md",
-    "Rozetka/Функціональність за ролями/Продавець.md",
-    "Rozetka/General functionality.md",
-    "Rozetka/Функціональність за ролями/Користувач.md",
-    "Rozetka/Функціональність за ролями/Гість.md",
-    "Rozetka/Функціональність за ролями",
-    "Rozetka/Гість",
-    "Rozetka/ТЗ.canvas",
-    "Заметки/Backend/env.md",
-    "Rozetka",
-    "Заметки/Frontend/Next.js.md",
-    "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
-    "Заметки/Backend/Events.md",
-    "Заметки/Backend/DDD",
-    "Заметки/Azure/Основные службы.md",
-    "Entity Framework Core.md",
-    "Заметки/Backend/TypeScript.md",
-    "Заметки/Azure/Azure Functions.md",
-    "Заметки/Backend/CQRS + Mediator.md",
-    "Заметки/Backend/WebApplicationBuilderExtensions.md",
-    "Заметки/Frontend/React (TypeScript).md",
-    "Заметки/Frontend/Vite.md",
-    "Заметки/Backend/From атрибуты.md",
-    "Заметки/Backend/Vertical Sliced Architecture (VSA).md",
-    "Заметки/Backend/Http Methods.md",
-    "Заметки/Backend/ASP.NET Core MVC.md",
-    "Заметки/Backend/FastEndpoints.md",
-    "Заметки/Backend/SignalR + Hubs.md",
-    "Заметки/Backend/Patterns/Result.md",
-    "Заметки/Backend/gitignore ASP NET Core.md",
-    "Untitled.canvas",
-    "Заметки/Azure",
-    "Заметки/Books/Чистый код",
-    "Заметки/Books",
-    "Заметки/Backend/Patterns",
-    "Заметки/Frontend/BEM methodology",
-    "Заметки/Backend"
+    "General functionality.md",
+    "Функціональність за ролями/Гість.md",
+    "Добро пожаловать.md",
+    "Функціональність за ролями/Продавець.md",
+    "Функціональність за ролями/Користувач.md",
+    "Функціональність за ролями"
   ]
 }

@@ -1,0 +1,29 @@
+{
+	"nodes":[
+		{"id":"85b8fbe13b661675","type":"text","text":"Головна сторінка","x":-118,"y":-190,"width":198,"height":60},
+		{"id":"67f1e6a73c5d8875","type":"text","text":"Пошукова стрічка","x":-465,"y":-260,"width":260,"height":60},
+		{"id":"be0975c4c01509a4","type":"text","text":"Кнопка кошику","x":-460,"y":-120,"width":250,"height":60},
+		{"id":"5a961e0979cdd8a4","type":"text","text":"Кнопка бокове меню","x":160,"y":-260,"width":250,"height":60},
+		{"id":"45008656d1507b44","type":"text","text":"Плитки товарів","x":185,"y":-115,"width":200,"height":50},
+		{"id":"039c25ee63b9851c","type":"text","text":"![[Pasted image 20250628144542.png]]","x":175,"y":40,"width":220,"height":300},
+		{"id":"a3857702bce6291b","type":"text","text":"![[Pasted image 20250628144604.png]]","x":460,"y":40,"width":200,"height":360},
+		{"id":"802d7f4f82d5ecd5","type":"text","text":"![[Pasted image 20250628144508.png]]","x":-100,"y":40,"width":214,"height":300},
+		{"id":"ed4c66b4fc03bfba","x":-460,"y":-478,"width":200,"height":60,"type":"text","text":"Кнопка Каталогу"},
+		{"id":"ed6d952fe991cc95","x":-210,"y":-478,"width":217,"height":60,"type":"text","text":"Кнопка замовлення"},
+		{"id":"d2d5f2dbb01c624e","x":62,"y":-478,"width":226,"height":60,"type":"text","text":"Кнопка порівняння"},
+		{"id":"879d0189b2584df8","x":340,"y":-478,"width":194,"height":60,"type":"text","text":"Кнопка обране"}
+	],
+	"edges":[
+		{"id":"f0655af7d58fb97c","fromNode":"85b8fbe13b661675","fromSide":"left","toNode":"67f1e6a73c5d8875","toSide":"right"},
+		{"id":"e3918c94a1286de5","fromNode":"85b8fbe13b661675","fromSide":"left","toNode":"be0975c4c01509a4","toSide":"right"},
+		{"id":"36aa561eadcf3ef3","fromNode":"85b8fbe13b661675","fromSide":"right","toNode":"5a961e0979cdd8a4","toSide":"left"},
+		{"id":"f37e4b8b20195e7c","fromNode":"85b8fbe13b661675","fromSide":"right","toNode":"45008656d1507b44","toSide":"left"},
+		{"id":"f6f1ab0a8bf1d326","fromNode":"45008656d1507b44","fromSide":"bottom","toNode":"802d7f4f82d5ecd5","toSide":"top"},
+		{"id":"87e5a71f3072d7ee","fromNode":"45008656d1507b44","fromSide":"bottom","toNode":"039c25ee63b9851c","toSide":"top"},
+		{"id":"e55afa7bbe6b0b27","fromNode":"45008656d1507b44","fromSide":"bottom","toNode":"a3857702bce6291b","toSide":"top"},
+		{"id":"c0eddb6d4fbd37a1","fromNode":"85b8fbe13b661675","fromSide":"top","toNode":"ed4c66b4fc03bfba","toSide":"bottom"},
+		{"id":"ad6736bb7067c323","fromNode":"85b8fbe13b661675","fromSide":"top","toNode":"ed6d952fe991cc95","toSide":"bottom"},
+		{"id":"a779aaafa8b2b307","fromNode":"85b8fbe13b661675","fromSide":"top","toNode":"d2d5f2dbb01c624e","toSide":"bottom"},
+		{"id":"e780c7784b03ea6f","fromNode":"85b8fbe13b661675","fromSide":"top","toNode":"879d0189b2584df8","toSide":"bottom"}
+	]
+}

@@ -15,8 +15,8 @@
               "state": {
                 "file": "DDD.canvas",
                 "viewState": {
-                  "x": -928.9678676950075,
-                  "y": -685.8962241799017,
+                  "x": -868.3623234900216,
+                  "y": -687.4113627850254,
                   "zoom": -0.7041471563776309
                 }
               },
@@ -38,8 +38,7 @@
               "title": "General functionality"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -183,10 +182,10 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "45964bae4acc9767",
+  "active": "8c5eeb29d048c94f",
   "lastOpenFiles": [
-    "DDD.canvas",
     "General functionality.md",
+    "DDD.canvas",
     "Картки/Картка головної сторінки.canvas",
     "Фото/Pasted image 20250628144031.png",
     "Фото/Pasted image 20250628144225.png",

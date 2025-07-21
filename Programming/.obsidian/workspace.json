@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3b28b8c2246596ce",
+        "id": "0b67e92c2da7a765",
         "type": "tabs",
         "children": [
           {
-            "id": "79df3429799b6414",
+            "id": "17c5c362d6691845",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Even",
+                "query": "Entity",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,10 +157,16 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "5e231f0affa37b55",
+  "active": "17c5c362d6691845",
   "lastOpenFiles": [
-    "To-do/сделать проекты.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/IEntityTypeConfiguration<T>.md",
+    "To-do/сделать проекты.md",
+    "Заметки/Backend/env.md",
+    "Заметки/Backend/Patterns/Result.md",
+    "Заметки/Backend/DDD/Работа с коллекциями в сущностях.md",
+    "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
+    "Заметки/Backend/DDD/ыв.md",
     "Rozetka/Функціональність за ролями/Продавець.md",
     "Rozetka/General functionality.md",
     "Rozetka/Функціональність за ролями/Користувач.md",
@@ -168,10 +174,8 @@
     "Rozetka/Функціональність за ролями",
     "Rozetka/Гість",
     "Rozetka/ТЗ.canvas",
-    "Заметки/Backend/env.md",
     "Rozetka",
     "Заметки/Frontend/Next.js.md",
-    "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
     "Заметки/Backend/Events.md",
     "Заметки/Backend/DDD",
     "Заметки/Azure/Основные службы.md",
@@ -186,10 +190,6 @@
     "Заметки/Backend/Vertical Sliced Architecture (VSA).md",
     "Заметки/Backend/Http Methods.md",
     "Заметки/Backend/ASP.NET Core MVC.md",
-    "Заметки/Backend/FastEndpoints.md",
-    "Заметки/Backend/SignalR + Hubs.md",
-    "Заметки/Backend/Patterns/Result.md",
-    "Заметки/Backend/gitignore ASP NET Core.md",
     "Untitled.canvas",
     "Заметки/Azure",
     "Заметки/Books/Чистый код",

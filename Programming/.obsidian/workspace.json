@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "0b67e92c2da7a765",
+        "id": "30b4e3b6126fb785",
         "type": "tabs",
         "children": [
           {
-            "id": "17c5c362d6691845",
+            "id": "f2b11e0e919a2f5d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "To-do/написать заметки.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "написать заметки"
             }
           }
         ]
@@ -49,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Entity",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -157,45 +161,45 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "17c5c362d6691845",
+  "active": "f2b11e0e919a2f5d",
   "lastOpenFiles": [
+    "To-do/подтянуть.md",
     "To-do/написать заметки.md",
-    "Заметки/Backend/IEntityTypeConfiguration<T>.md",
-    "To-do/сделать проекты.md",
-    "Заметки/Backend/env.md",
-    "Заметки/Backend/Patterns/Result.md",
-    "Заметки/Backend/DDD/Работа с коллекциями в сущностях.md",
-    "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
-    "Заметки/Backend/DDD/ыв.md",
-    "Rozetka/Функціональність за ролями/Продавець.md",
-    "Rozetka/General functionality.md",
-    "Rozetka/Функціональність за ролями/Користувач.md",
-    "Rozetka/Функціональність за ролями/Гість.md",
+    "Заметки/Backend/Delegates.md",
+    "Заметки/Backend/Architecture/Modular Monolith.md",
+    "Заметки/Backend/Architecture",
+    "Заметки/Backend/ASP.NET Core/Minimal API.md",
+    "Заметки/Backend/ASP.NET Core/InMemory Caching.md",
+    "Заметки/Backend/ASP.NET Core/WebApplicationBuilderExtensions.md",
+    "Заметки/Backend/Architecture/Vertical Sliced Architecture (VSA).md",
+    "Заметки/Frontend/TypeScript.md",
+    "Заметки/Backend/ASP.NET Core/SignalR + Hubs.md",
+    "Заметки/Backend/Serilog.md",
+    "Заметки/Backend/Scrum.md",
+    "Заметки/Backend/ASP.NET Core/Rate Limiter.md",
+    "Заметки/Backend/LINQ.md",
+    "Заметки/Backend/ASP.NET Core/Middleware.md",
+    "Заметки/Backend/JWT.md",
+    "Заметки/Backend/ASP.NET Core/IOptionsMonitor IOptionsSnapshot.md",
+    "Заметки/Backend/ASP.NET Core/IOptions.md",
+    "Заметки/Backend/ASP.NET Core/IHostedService.md",
+    "Заметки/Backend/ASP.NET Core/HttpOnly Cookie.md",
+    "Заметки/Backend/Http Methods.md",
+    "Заметки/Backend/Hangfire.md",
+    "Заметки/Backend/ASP.NET Core/From атрибуты.md",
+    "Заметки/Backend/ASP.NET Core/Fluent Validation.md",
+    "Заметки/Backend/ASP.NET Core/DI injection types.md",
+    "Заметки/Backend/ASP.NET Core/BackgroundService.md",
+    "Заметки/Backend/ASP.NET Core",
     "Rozetka/Функціональність за ролями",
     "Rozetka/Гість",
     "Rozetka/ТЗ.canvas",
     "Rozetka",
-    "Заметки/Frontend/Next.js.md",
-    "Заметки/Backend/Events.md",
     "Заметки/Backend/DDD",
-    "Заметки/Azure/Основные службы.md",
-    "Entity Framework Core.md",
-    "Заметки/Backend/TypeScript.md",
-    "Заметки/Azure/Azure Functions.md",
-    "Заметки/Backend/CQRS + Mediator.md",
-    "Заметки/Backend/WebApplicationBuilderExtensions.md",
-    "Заметки/Frontend/React (TypeScript).md",
-    "Заметки/Frontend/Vite.md",
-    "Заметки/Backend/From атрибуты.md",
-    "Заметки/Backend/Vertical Sliced Architecture (VSA).md",
-    "Заметки/Backend/Http Methods.md",
-    "Заметки/Backend/ASP.NET Core MVC.md",
     "Untitled.canvas",
     "Заметки/Azure",
     "Заметки/Books/Чистый код",
     "Заметки/Books",
-    "Заметки/Backend/Patterns",
-    "Заметки/Frontend/BEM methodology",
-    "Заметки/Backend"
+    "Заметки/Backend/Patterns"
   ]
 }

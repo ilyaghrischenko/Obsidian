@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "30b4e3b6126fb785",
+        "id": "d323dca8ea8bb9f1",
         "type": "tabs",
         "children": [
           {
-            "id": "f2b11e0e919a2f5d",
+            "id": "6fe65060a84a06a2",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -162,10 +162,29 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "f2b11e0e919a2f5d",
+  "active": "6fe65060a84a06a2",
   "lastOpenFiles": [
-    "To-do/подтянуть.md",
+    "Заметки/Backend/Модификаторы доступа.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/Testing/Fluent Assertions.md",
+    "Заметки/Backend/Очереди (Azure Queue, RabbitMQ, etc...).md",
+    "Заметки/Backend/CORS.md",
+    "Заметки/Backend/Secrets/env + DotNetEnv.md",
+    "Заметки/Backend/Secrets",
+    "Заметки/Backend/Auth/JWT Policy.md",
+    "Заметки/Backend/Auth/JWT.md",
+    "Заметки/Backend/IDisposable IAsyncDisposable.md",
+    "Заметки/Backend/Auth",
+    "Заметки/Backend/Implicit и Explicit операторы.md",
+    "Заметки/Backend/EntityFrameworkCore/IEntityTypeConfiguration<T>.md",
+    "Заметки/Backend/EntityFrameworkCore/Bulk operations.md",
+    "Заметки/Backend/ASP.NET Core/IExceptionHandler + ProblemDetails.md",
+    "Заметки/Backend/Http Methods.md",
+    "Заметки/Backend/EntityFrameworkCore/AsSplitQuery.md",
+    "Заметки/Backend/EntityFrameworkCore",
+    "Заметки/Backend/Dapper.md",
+    "Заметки/Backend/Testing",
+    "To-do/подтянуть.md",
     "Заметки/Backend/Delegates.md",
     "Заметки/Backend/Architecture/Modular Monolith.md",
     "Заметки/Backend/Architecture",
@@ -176,31 +195,12 @@
     "Заметки/Frontend/TypeScript.md",
     "Заметки/Backend/ASP.NET Core/SignalR + Hubs.md",
     "Заметки/Backend/Serilog.md",
-    "Заметки/Backend/Scrum.md",
-    "Заметки/Backend/ASP.NET Core/Rate Limiter.md",
-    "Заметки/Backend/LINQ.md",
-    "Заметки/Backend/ASP.NET Core/Middleware.md",
-    "Заметки/Backend/JWT.md",
-    "Заметки/Backend/ASP.NET Core/IOptionsMonitor IOptionsSnapshot.md",
-    "Заметки/Backend/ASP.NET Core/IOptions.md",
-    "Заметки/Backend/ASP.NET Core/IHostedService.md",
-    "Заметки/Backend/ASP.NET Core/HttpOnly Cookie.md",
-    "Заметки/Backend/Http Methods.md",
-    "Заметки/Backend/Hangfire.md",
-    "Заметки/Backend/ASP.NET Core/From атрибуты.md",
-    "Заметки/Backend/ASP.NET Core/Fluent Validation.md",
-    "Заметки/Backend/ASP.NET Core/DI injection types.md",
-    "Заметки/Backend/ASP.NET Core/BackgroundService.md",
     "Заметки/Backend/ASP.NET Core",
     "Rozetka/Функціональність за ролями",
     "Rozetka/Гість",
     "Rozetka/ТЗ.canvas",
     "Rozetka",
     "Заметки/Backend/DDD",
-    "Untitled.canvas",
-    "Заметки/Azure",
-    "Заметки/Books/Чистый код",
-    "Заметки/Books",
-    "Заметки/Backend/Patterns"
+    "Untitled.canvas"
   ]
 }

@@ -74,7 +74,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 ### **Настройка авторизации с использованием ролей**:
 
-Таким образом мы можем создать [[Jwt Policy]]
+Таким образом мы можем создать [[JWT Policy]]
 
 ``` csharp
 builder.Services.AddAuthorizationBuilder()

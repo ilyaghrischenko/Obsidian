@@ -35,8 +35,7 @@
               "title": "Versioning"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -177,10 +176,10 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "1e31097374ee3d3f",
+  "active": "f1aa45785f75b6ea",
   "lastOpenFiles": [
-    "To-do/написать заметки.md",
     "Заметки/Backend/ASP.NET Core/Versioning.md",
+    "To-do/написать заметки.md",
     "Заметки/Backend/ValueTask.md",
     "Заметки/Backend/Span.md",
     "Заметки/Backend/Testing/Fluent Assertions.md",

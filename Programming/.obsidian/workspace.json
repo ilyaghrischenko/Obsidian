@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "To-do/написать заметки.md",
+                "file": "Заметки/Backend/CORS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "написать заметки"
+              "title": "CORS"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "CORS",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,7 +74,8 @@
               "title": "Закладки"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -164,8 +165,8 @@
   },
   "active": "a780f4e01eea8977",
   "lastOpenFiles": [
-    "Заметки/Backend/CI CD.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/CI CD.md",
     "Заметки/Backend/SelectMany.md",
     "Заметки/Backend/Concurrent коллекции.md",
     "Заметки/Backend/Pagination",

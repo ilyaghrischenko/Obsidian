@@ -1,2 +1,2 @@
-- [ ] OAuth Apple
+- [ ] OAuth Facebook/Meta
 - [ ] разбить на микросервисы

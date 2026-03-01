@@ -79,9 +79,21 @@
               "icon": "lucide-file",
               "title": "Доделать"
             }
+          },
+          {
+            "id": "76ed083a92508ec3",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "примечания к выпуску 1.10.6"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -226,10 +238,9 @@
       "command-palette:Открыть палитру команд": false
     }
   },
-  "active": "7f54e44a112fb83c",
+  "active": "76ed083a92508ec3",
   "lastOpenFiles": [
     "Todo.md",
-    "Доделать.md",
     "Доделать.md",
     "General functionality.md",
     "Без названия 1.base",

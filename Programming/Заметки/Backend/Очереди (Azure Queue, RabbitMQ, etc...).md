@@ -1,3 +1,5 @@
+tags: [#backend, #queues, #azure-queue, #rabbitmq]
+
 ## **Что такое очередь?**
 
   

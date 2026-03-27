@@ -1,3 +1,5 @@
+tags: [#backend, #code-analyzers, #copy-paste]
+
 editorconfig
 ``` .editorconfig
 root = true  

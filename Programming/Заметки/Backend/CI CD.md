@@ -1,3 +1,5 @@
+tags: [#backend, #ci-cd]
+
 ## **Что такое CI/CD**
 
   

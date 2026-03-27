@@ -1,3 +1,5 @@
+tags: [#backend, #shared-settings, #directory-build-props]
+
 ## Что такое Directory.Build.props?
 
 **`Directory.Build.props`** - это специальный файл MSBuild, который позволяет хранить общие настройки для нескольких `.csproj` в одном месте. Он автоматически подхватывается проектами внутри директории и всех вложенных папок.

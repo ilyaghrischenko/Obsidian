@@ -1,3 +1,5 @@
+tags: [#backend, #architecture, #vertical-slice-architecture]
+
 ## Что такое Vertical Sliced Architecture
 
 Vertical Sliced Architecture (VSA) — это подход к организации кода, в котором приложение делится не на слои (как в Clean Architecture), а на вертикальные куски функционала, чаще всего определяемые по контроллеру или по одному рейкуесту.

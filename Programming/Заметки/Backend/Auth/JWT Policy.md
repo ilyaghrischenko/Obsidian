@@ -1,3 +1,4 @@
+tags: [#backend, #auth, #jwt, #policy]
 
 ## 1. Что это и зачем?
 

@@ -1,3 +1,5 @@
+tags: [#frontend, #vite]
+
 # Vite vs Create React App (CRA)
 
 ## Введение

@@ -1,3 +1,5 @@
+tags: [#backend, #testing, #fluent-assertions]
+
 ## Что такое FluentAssertions?
 FluentAssertions — это библиотека для удобного написания утверждений (assertions) в тестах C#. Она позволяет писать читаемые и выразительные проверки, улучшая читаемость и поддержку тестов.
 

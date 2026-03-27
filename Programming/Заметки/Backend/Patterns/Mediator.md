@@ -1,3 +1,5 @@
+tags: [#backend, #patterns, #mediator]
+
 # MediatR и паттерн Mediator в `C#`#
 
 ## 1. Паттерн Mediator

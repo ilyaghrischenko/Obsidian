@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #minimal-api]
+
 ## **Введение**
 
 

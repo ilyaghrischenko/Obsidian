@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #ihostedservice]
+
 ## **1. Что такое** 
 
 ## **IHostedService**

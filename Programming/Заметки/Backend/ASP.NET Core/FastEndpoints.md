@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #fastendpoints]
+
 ## **🔍 Что такое FastEndpoints**
 
   

@@ -1,3 +1,4 @@
+tags: [#backend, #database, #entity-framework-core, #bulk-operations]
 
 ## **Что это такое**
 

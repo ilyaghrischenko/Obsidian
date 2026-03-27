@@ -1,3 +1,5 @@
+tags: [#backend, #pagination, #cursor-pagination]
+
 ## Что такое Cursor-based Pagination?
 
 **Cursor-based pagination** - это способ пагинации, при котором следующая страница строится не через номер страницы и `OFFSET`, а через специальный курсор. Обычно курсором выступает уникальное или монотонно возрастающее поле, например `Id` или `CreatedAt`.

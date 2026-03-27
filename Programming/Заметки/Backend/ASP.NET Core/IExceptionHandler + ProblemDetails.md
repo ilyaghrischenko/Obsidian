@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #iexceptionhandler, #problem-details]
+
 ## **Что это такое**
 
 - **IExceptionHandler** — интерфейс в ASP.NET Core 7+, позволяющий централизованно обрабатывать исключения.

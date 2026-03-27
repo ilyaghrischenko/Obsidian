@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #backgroundservice]
+
 ## **1. Что такое** 
 
 ## **BackgroundService**

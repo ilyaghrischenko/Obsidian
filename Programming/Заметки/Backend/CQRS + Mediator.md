@@ -1,3 +1,5 @@
+tags: [#backend, #cqrs, #mediator]
+
 ## Что такое [[CQRS]]?
 
 **CQRS (Command Query Responsibility Segregation)** — это архитектурный паттерн, разделяющий операции **чтения** (Query) и **изменения состояния** (Command). Это позволяет:

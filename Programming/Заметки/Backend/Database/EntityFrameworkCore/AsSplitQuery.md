@@ -1,3 +1,4 @@
+tags: [#backend, #database, #entity-framework-core, #assplitquery]
 
 ## **Что это такое**
 

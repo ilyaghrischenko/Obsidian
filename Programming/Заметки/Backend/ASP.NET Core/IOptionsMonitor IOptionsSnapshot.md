@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #ioptionsmonitor, #ioptionssnapshot]
+
 ### 1. Что такое `IOptionsMonitor` и `IOptionsSnapshot`, зачем они нужны?
 
 В .NET Core для управления конфигурациями, помимо обычного [[IOptions]], часто используются интерфейсы `IOptionsMonitor` и `IOptionsSnapshot`. Оба интерфейса предоставляют доступ к конфигурации приложения, но с разными особенностями и назначением.

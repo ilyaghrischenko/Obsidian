@@ -1,3 +1,5 @@
+tags: [#backend, #architecture, #clean-architecture, #vertical-slice-architecture]
+
 ## Что такое Clean + VSA?
 
 **Clean + VSA** - это подход, в котором архитектура проекта остается чистой по границам проектов, но прикладная логика при этом организуется по use case и feature-срезам.  

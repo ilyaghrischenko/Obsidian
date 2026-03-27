@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #rate-limiter]
+
 ## Что такое RateLimiter и зачем он нужен?
 `RateLimiter` — это механизм ограничения частоты запросов к серверу. Он помогает предотвратить перегрузку системы, злоупотребление API и атаки типа DoS (Denial of Service).
 

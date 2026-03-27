@@ -1,3 +1,5 @@
+tags: [#backend, #architecture, #modular-monolith]
+
 ## **Введение**
 
 

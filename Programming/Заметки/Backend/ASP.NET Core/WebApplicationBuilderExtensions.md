@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #webapplicationbuilderextensions]
+
 ## Введение
 
 `WebApplicationBuilderExtensions` — это статический класс, предназначенный для расширения возможностей `WebApplicationBuilder` ([[Builder]]) в ASP.NET Core. Он помогает вынести регистрацию сервисов, [[Middleware]] и конфигураций в отдельные методы, упрощая `Program.cs`.

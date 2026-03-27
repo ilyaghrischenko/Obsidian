@@ -1,3 +1,5 @@
+tags: [#backend, #cancellation-token]
+
 ## **🧾 Что такое** 
 
 ## **CancellationToken**

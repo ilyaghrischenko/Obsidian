@@ -1,3 +1,4 @@
+tags: [#backend, #database, #mongodb, #mongodb-driver]
 
 Краткое руководство по интеграции, настройке и best practices.
 

@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a401e58d6dc494ae",
+        "id": "bb6c94080fd76a71",
         "type": "tabs",
         "children": [
           {
-            "id": "833fca663a89dba7",
+            "id": "47e8b03613e47a73",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "DDD - Domain Driven Design"
             }
           }
         ]
@@ -158,8 +162,16 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "833fca663a89dba7",
+  "active": "47e8b03613e47a73",
   "lastOpenFiles": [
+    "Заметки/Backend/DDD/Работа с коллекциями в сущностях.md",
+    "Заметки/Backend/Database/EntityFrameworkCore/AsSplitQuery.md",
+    "Заметки/Backend/Database/MongoDB/MongoDB.Driver в ASP.NET Core Web API.md",
+    "Заметки/Backend/Database/MongoDB/JSON to Dictionary.md",
+    "Заметки/Backend/CodeAnalyzers/Copy&Paste.md",
+    "Заметки/Backend/CORS.md",
+    "Заметки/Backend/CancellationToken.md",
+    "Заметки/Backend/AutoMapper.md",
     "Заметки/Backend/Architecture/Clean + VSA.md",
     "Заметки/Backend/Architecture/Clean Architecture.md",
     "To-do/написать заметки.md",
@@ -184,18 +196,10 @@
     "Заметки/AI/AI in development.md",
     "Заметки/Backend/Logging/Serilog + MongoDB.md",
     "Заметки/AI",
-    "Заметки/Backend/Database/MongoDB/MongoDB.Driver в ASP.NET Core Web API.md",
     "Заметки/Backend/Logging",
-    "Заметки/Backend/Database/MongoDB/JSON to Dictionary.md",
     "Заметки/Backend/Database",
     "Заметки/Backend/Database/MongoDB",
     "Заметки/Backend/ASP.NET Core/Fluent Validation.md",
-    "Заметки/Backend/CodeAnalyzers/Copy&Paste.md",
-    "Заметки/Backend/CORS.md",
-    "Заметки/Backend/CI CD.md",
-    "Заметки/Backend/SelectMany.md",
-    "Заметки/Backend/Concurrent коллекции.md",
-    "Заметки/Backend/ASP.NET Core/InMemory Caching.md",
     "Rozetka/ТЗ.canvas",
     "Untitled.canvas"
   ]

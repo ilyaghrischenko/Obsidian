@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #healthchecks]
+
 ## **📌 Что такое Health Checks?**
 
   

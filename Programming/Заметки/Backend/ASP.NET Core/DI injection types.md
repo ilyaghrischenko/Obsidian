@@ -1,3 +1,5 @@
+tags: [#backend, #asp-net-core, #dependency-injection]
+
 ## 1. Что это и зачем?
 
 Внедрение зависимостей (Dependency Injection, DI) — это способ управления зависимостями в приложении. Это позволяет:

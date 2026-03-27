@@ -1,3 +1,5 @@
+tags: [#backend, #pagination, #offset-pagination]
+
 ## Что такое Offset Pagination?
 
 **Offset pagination** - это способ постраничного получения данных, при котором база данных пропускает определенное количество строк через `OFFSET` и затем возвращает следующую порцию через `LIMIT` или `Take`.

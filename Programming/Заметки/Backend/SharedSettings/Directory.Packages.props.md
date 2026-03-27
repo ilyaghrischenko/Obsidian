@@ -1,3 +1,5 @@
+tags: [#backend, #shared-settings, #directory-packages-props]
+
 ## Что такое Directory.Packages.props?
 
 **`Directory.Packages.props`** - это файл для централизованного управления версиями NuGet-пакетов в `.NET`-решении. Вместо того чтобы указывать `Version` в каждом `PackageReference`, версии выносятся в одно общее место.

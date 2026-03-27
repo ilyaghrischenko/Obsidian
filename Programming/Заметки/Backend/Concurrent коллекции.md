@@ -1,3 +1,4 @@
+tags: [#backend, #concurrency, #collections]
 
 Concurrent коллекции в `System.Collections.Concurrent` предназначены для безопасной работы с данными в многопоточной среде. Они решают проблему гонки потоков, исключая необходимость явной блокировки (`lock`).
 

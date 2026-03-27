@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "adc6742e75fc8855",
+        "id": "30663e3a8030eccf",
         "type": "tabs",
         "children": [
           {
-            "id": "63dcad8ae0ec6bc7",
+            "id": "873054ba06137e68",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
+                "file": "Заметки/Backend/Architecture/Clean + VSA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AsParameters attribute"
+              "title": "Clean + VSA"
             }
           }
         ]
@@ -162,10 +162,28 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "63dcad8ae0ec6bc7",
+  "active": "873054ba06137e68",
   "lastOpenFiles": [
-    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
+    "Заметки/Backend/Architecture/Clean + VSA.md",
+    "Заметки/Backend/Architecture/Clean Architecture.md",
     "To-do/написать заметки.md",
+    "Заметки/Backend/HelpfulLibraries/Scrutor.md",
+    "Заметки/Backend/HelpfulLibraries",
+    "Заметки/Backend/SharedSettings/Directory.Packages.props.md",
+    "Заметки/Backend/SharedSettings/Directory.Build.props.md",
+    "Заметки/Backend/SharedSettings",
+    "To-do/сделать проекты.md",
+    "Заметки/Backend/Pagination/Cursor-based.md",
+    "Заметки/Backend/Pagination/Offset.md",
+    "Заметки/Pagination/Cursor-based.md",
+    "Заметки/Pagination/Offset.md",
+    "Заметки/Pagination",
+    "Заметки/Backend/API Documentation/Swagger.md",
+    "Заметки/Backend/API Documentation",
+    "Backend/API Documentation/Swagger.md",
+    "Backend/API Documentation",
+    "Backend",
+    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
     "To-do/подтянуть.md",
     "Заметки/AI/AI in development.md",
     "Заметки/Backend/Logging/Serilog + MongoDB.md",
@@ -177,29 +195,11 @@
     "Заметки/Backend/Database/MongoDB",
     "Заметки/Backend/ASP.NET Core/Fluent Validation.md",
     "Заметки/Backend/CodeAnalyzers/Copy&Paste.md",
-    "Заметки/Backend/CodeAnalyzers",
     "Заметки/Backend/CORS.md",
     "Заметки/Backend/CI CD.md",
     "Заметки/Backend/SelectMany.md",
     "Заметки/Backend/Concurrent коллекции.md",
-    "Заметки/Backend/Pagination",
     "Заметки/Backend/ASP.NET Core/InMemory Caching.md",
-    "Заметки/Backend/ASP.NET Core/Versioning.md",
-    "Заметки/Backend/ValueTask.md",
-    "Заметки/Backend/Span.md",
-    "Заметки/Backend/Testing/Fluent Assertions.md",
-    "Заметки/Backend/Модификаторы доступа.md",
-    "Заметки/Backend/Очереди (Azure Queue, RabbitMQ, etc...).md",
-    "Заметки/Backend/Secrets/env + DotNetEnv.md",
-    "Заметки/Backend/Secrets",
-    "Заметки/Backend/Auth/JWT Policy.md",
-    "Заметки/Backend/Auth/JWT.md",
-    "Заметки/Backend/IDisposable IAsyncDisposable.md",
-    "Заметки/Backend/Auth",
-    "Заметки/Backend/Implicit и Explicit операторы.md",
-    "Заметки/Backend/Database/EntityFrameworkCore/IEntityTypeConfiguration<T>.md",
-    "Заметки/Backend/Database/EntityFrameworkCore",
-    "Заметки/Backend/Testing",
     "Rozetka/ТЗ.canvas",
     "Untitled.canvas"
   ]

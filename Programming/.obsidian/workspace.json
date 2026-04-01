@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a90286c697065850",
+        "id": "5cf1495a729c04db",
         "type": "tabs",
         "children": [
           {
-            "id": "e406dbbde64b5986",
+            "id": "1a966cb84824799f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Заметки/AI/Codex/Skills/vertical-slice.md",
+                "file": "To-do/написать заметки.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "vertical-slice"
+              "title": "написать заметки"
             }
           }
         ]
@@ -162,16 +162,18 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "e406dbbde64b5986",
+  "active": "1a966cb84824799f",
   "lastOpenFiles": [
-    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
+    "Заметки/AI/AGENTS.md + skill + prompt.md",
+    "Заметки/AI/Agent skills.md",
     "To-do/написать заметки.md",
+    "Заметки/AI/AGENTS.md.md",
     "Заметки/AI/Codex/Skills/vertical-slice.md",
+    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
     "Заметки/AI/Codex/Skills/unit-tests.md",
     "Заметки/AI/Instructions/commit.md",
     "Заметки/AI/Codex/Skills",
     "Заметки/AI/Instructions",
-    "Заметки/AI/Без названия.md",
     "Заметки/Backend/Gmail",
     "Заметки/AI/Codex/codexignore.md",
     "Без названия.base",
@@ -195,8 +197,6 @@
     "To-do/сделать проекты.md",
     "Заметки/Backend/Pagination/Cursor-based.md",
     "Заметки/Backend/Pagination/Offset.md",
-    "Заметки/Pagination/Cursor-based.md",
-    "Заметки/Pagination/Offset.md",
     "Заметки/Pagination",
     "Заметки/Backend/API Documentation",
     "Backend/API Documentation",

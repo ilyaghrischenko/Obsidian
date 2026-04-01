@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0af19f6b72070a15",
+        "id": "a90286c697065850",
         "type": "tabs",
         "children": [
           {
-            "id": "25fe42ac0d202b9d",
+            "id": "e406dbbde64b5986",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -158,12 +158,19 @@
       "github-sync:Sync with Remote": false
     }
   },
-  "active": "25fe42ac0d202b9d",
+  "active": "e406dbbde64b5986",
   "lastOpenFiles": [
-    "Заметки/AI/Codex/codexignore.md",
+    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
     "To-do/написать заметки.md",
-    "Без названия.base",
+    "Заметки/AI/Codex/Skills/vertical-slice.md",
+    "Заметки/AI/Codex/Skills/unit-tests.md",
+    "Заметки/AI/Instructions/commit.md",
+    "Заметки/AI/Codex/Skills",
+    "Заметки/AI/Instructions",
     "Заметки/AI/Без названия.md",
+    "Заметки/Backend/Gmail",
+    "Заметки/AI/Codex/codexignore.md",
+    "Без названия.base",
     "Заметки/AI/Codex",
     "Заметки/Backend/DDD/DDD - Domain Driven Design.md",
     "Заметки/Backend/DDD/Работа с коллекциями в сущностях.md",
@@ -187,14 +194,8 @@
     "Заметки/Pagination/Cursor-based.md",
     "Заметки/Pagination/Offset.md",
     "Заметки/Pagination",
-    "Заметки/Backend/API Documentation/Swagger.md",
     "Заметки/Backend/API Documentation",
-    "Backend/API Documentation/Swagger.md",
     "Backend/API Documentation",
-    "Backend",
-    "Заметки/Backend/ASP.NET Core/AsParameters attribute.md",
-    "Заметки/AI",
-    "Заметки/Backend/Logging",
     "Rozetka/ТЗ.canvas",
     "Untitled.canvas"
   ]

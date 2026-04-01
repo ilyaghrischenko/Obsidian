@@ -1,0 +1,2 @@
+- Hybrid - VSA (Vertical-Sliced-Architecture) + Clean Architecture
+- DDD

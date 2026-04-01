@@ -1,0 +1,17 @@
+{
+	"nodes":[
+		{"id":"8c0510f2438fd999","type":"file","file":"Domain/Models/Booking.md","x":-720,"y":-400,"width":340,"height":560,"color":"4"},
+		{"id":"5a3b316041bed251","type":"file","file":"Domain/Models/Admin.md","x":-810,"y":-561,"width":180,"height":120,"color":"4"},
+		{"id":"b706758b266c29a7","type":"file","file":"Domain/Models/Diagnosis.md","x":-300,"y":-340,"width":180,"height":120,"color":"4"},
+		{"id":"2381b7c62070b5ca","type":"file","file":"Domain/Models/Medicine.md","x":-295,"y":-160,"width":170,"height":99,"color":"4"},
+		{"id":"8c02fc9fd4611c5a","type":"file","file":"Domain/Models/Discount.md","x":-980,"y":-80,"width":197,"height":140,"color":"4"},
+		{"id":"d8239260fa7cad58","type":"file","file":"Domain/Models/Service.md","x":-976,"y":-340,"width":190,"height":180,"color":"4"},
+		{"id":"2136e5dd84cdcb4d","type":"file","file":"Domain/Models/Specialist.md","x":-540,"y":-640,"width":256,"height":199,"color":"4"}
+	],
+	"edges":[
+		{"id":"f00175fa442e536d","fromNode":"8c0510f2438fd999","fromSide":"right","toNode":"b706758b266c29a7","toSide":"left"},
+		{"id":"15658e3c47d33dc8","fromNode":"b706758b266c29a7","fromSide":"bottom","toNode":"2381b7c62070b5ca","toSide":"top"},
+		{"id":"dd60d67809615a29","fromNode":"d8239260fa7cad58","fromSide":"bottom","toNode":"8c02fc9fd4611c5a","toSide":"top"},
+		{"id":"d26d0ce02805ac4a","fromNode":"8c0510f2438fd999","fromSide":"left","toNode":"d8239260fa7cad58","toSide":"right"}
+	]
+}

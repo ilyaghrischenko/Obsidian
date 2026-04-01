@@ -1,0 +1,2 @@
+string Login
+string Password

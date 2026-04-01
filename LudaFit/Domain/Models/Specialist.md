@@ -1,0 +1,5 @@
+string Name
+string PhotoUrl
+string Description
+TimeOnly WorkStartTime
+TimeOnly WorkEndTime

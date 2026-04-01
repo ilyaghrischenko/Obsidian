@@ -11,10 +11,14 @@
             "id": "e406dbbde64b5986",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Заметки/AI/Codex/Skills/vertical-slice.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "Новая вкладка"
+              "title": "vertical-slice"
             }
           }
         ]

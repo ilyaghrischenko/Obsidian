@@ -31,7 +31,10 @@ You must decide where to put the business logic based on its complexity:
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
 ## Required File Structure (Skeleton)
-You MUST structure the single file exactly like this template. Choose ONE of the `Handle` method implementations based on the Logic Placement Rule.
+You MUST structure the file exactly like one of the following templates. Choose the appropriate skeleton based on the Logic Placement Rule.
+
+### Skeleton 1: Simple Logic (No Handler)
+Use this when the logic is simple enough to reside directly in the Endpoint. Do NOT generate a Handler class.
 
 ```csharp
 using FluentValidation;
@@ -46,8 +49,7 @@ internal static class FeatureName
     
     internal sealed record Response(string Result);
 
-    // MUST implement IScopedType for DI auto-registration
-    internal sealed class Validator : AbstractValidator<Request>, IScopedType
+    internal sealed class Validator : AbstractValidator<Request>
     {
         public Validator()
         {
@@ -63,7 +65,6 @@ internal static class FeatureName
                 .WithTags("FeatureGroup");
         }
 
-        // OPTION 1: SIMPLE LOGIC (No Handler, direct DbContext injection)
         private static async Task<IResult> Handle(
             [FromBody] Request request,
             [FromServices] Validator validator,
@@ -76,14 +77,46 @@ internal static class FeatureName
                 return Results.ValidationProblem(validationResult.ToDictionary());
             }
 
-            // Simple DbContext query here
+            // Write simple DbContext query and logic here
+
             return Results.Ok(new Response("Processed"));
         }
+    }
+}
+```
 
-        /* OR */
+### Skeleton 2: Complex Logic (With Handler)
+Use this when the logic is complex and requires a separate Handler.
 
-        // OPTION 2: COMPLEX LOGIC (Inject Handler, NO DbContext here)
-        /*
+```csharp
+using FluentValidation;
+using FluentValidation.Results;
+// Include other necessary usings (EF Core, Domain entities, Custom Interfaces)
+
+namespace Inferred.Namespace.Here;
+
+internal static class FeatureName
+{
+    internal sealed record Request(string Data);
+    
+    internal sealed record Response(string Result);
+
+    internal sealed class Validator : AbstractValidator<Request>
+    {
+        public Validator()
+        {
+            // RuleFor(x => x.Data)...
+        }
+    }
+
+    internal sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app)
+        {
+            app.MapPost("/api/feature-name", Handle)
+                .WithTags("FeatureGroup");
+        }
+
         private static async Task<IResult> Handle(
             [FromBody] Request request,
             [FromServices] Validator validator,
@@ -97,17 +130,18 @@ internal static class FeatureName
             }
 
             var response = await handler.HandleAsync(request, ct);
+            
+            // If using a Result pattern, check success status here before returning Ok
             return Results.Ok(response);
         }
-        */
     }
     
-    // Include Handler ONLY if using OPTION 2 (Complex Logic)
-    internal sealed class Handler(AppDbContext db) : IScopedType
+    internal sealed class Handler(AppDbContext dbContext) : IScopedType
     {
         public async Task<Response> HandleAsync(Request request, CancellationToken ct)
         {
-            // Complex domain logic here
+            // Complex domain logic and transaction handling here
+            
             return new Response("Processed");
         }
     }

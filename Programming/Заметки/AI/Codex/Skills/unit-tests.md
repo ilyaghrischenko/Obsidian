@@ -24,6 +24,7 @@ This skill generates comprehensive C# unit tests for the selected code, adhering
 - **Explicit Types:** Use EXPLICIT types only. DO NOT use `var`. Use `var` ONLY if the type is completely obvious after the `=` sign (e.g., `var list = new List<string>();`).
 - **Modifiers:** Use `const` for local variables in the `// Arrange` section whenever possible (for compile-time constants).
 - **Structure:** Every test method MUST explicitly include `// Arrange`, `// Act`, and `// Assert` comments.
+- **Empty Strings:** You MUST use `string.Empty` instead of `""` everywhere inside the test method bodies (in Arrange, Act, and Assert sections). **CRITICAL EXCEPTION:** You MUST use `""` inside attributes like `[InlineData("")]`. Do NOT use `[InlineData(string.Empty)]`, as `string.Empty` is not a compile-time constant and will cause a C# compiler error.
 
 ### 4. Source Code Constraints
 - **DO NOT fix bugs** in the source code. If the source code has a logic or syntax error, leave the source unchanged and add `// TODO: [Description of the error]` inside the affected test method.

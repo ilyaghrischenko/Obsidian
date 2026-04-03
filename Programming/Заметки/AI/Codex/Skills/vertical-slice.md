@@ -17,7 +17,7 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 - **DbContext Fallback:** If `AGENTS.md` is missing or you cannot determine the exact `DbContext` name, scan the `Infrastructure` or `Data` directories for a class inheriting from `Microsoft.EntityFrameworkCore.DbContext`. If still not found, halt and ask the user.
 - **Mandatory Usings:** You MUST include `using FluentValidation;` and `using FluentValidation.Results;` (the latter is strictly required for the `.ToDictionary()` extension method).
 - **Custom Interfaces:** For the custom `IScopedType` and `IEndpoint` interfaces, infer their namespaces by scanning the project (usually in a Shared, Core, or Infrastructure building block). If you cannot find them, explicitly ask the user before generating the code.
-- **Result Pattern:** If the Handler returns a Result pattern and its definition is not found in `AGENTS.md`, assume a standard generic wrapper or ask the user for the specific implementation used in the project.
+- **Result Pattern & Error Handling:** The specific implementation of the Result pattern (e.g., `ErrorOr`, `FluentResults`, or custom generic wrappers) and how to map them to HTTP status codes MUST be obtained from the project's `AGENTS.md`. If `AGENTS.md` is missing this information, assume a standard generic wrapper or ask the user. Do NOT blindly return HTTP 200 OK if the Handler returns a Result object containing an error.
 
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:

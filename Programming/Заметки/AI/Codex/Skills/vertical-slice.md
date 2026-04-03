@@ -13,6 +13,12 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 - **Dependency Injection & Auto-Registration:** Inject dependencies via `[FromServices]` in the Minimal API endpoint method, or via primary constructor if using a separate Handler class. Do NOT manually register the Handler or Endpoint in the DI container. The `IScopedType` and `IEndpoint` interfaces handle registration automatically. NEVER modify `Program.cs`.
 - **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
 
+## Context Fallbacks & Dependencies
+- **DbContext Fallback:** If `AGENTS.md` is missing or you cannot determine the exact `DbContext` name, scan the `Infrastructure` or `Data` directories for a class inheriting from `Microsoft.EntityFrameworkCore.DbContext`. If still not found, halt and ask the user.
+- **Mandatory Usings:** You MUST include `using FluentValidation;` and `using FluentValidation.Results;` (the latter is strictly required for the `.ToDictionary()` extension method).
+- **Custom Interfaces:** For the custom `IScopedType` and `IEndpoint` interfaces, infer their namespaces by scanning the project (usually in a Shared, Core, or Infrastructure building block). If you cannot find them, explicitly ask the user before generating the code.
+- **Result Pattern:** If the Handler returns a Result pattern and its definition is not found in `AGENTS.md`, assume a standard generic wrapper or ask the user for the specific implementation used in the project.
+
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:
 - **Simple Logic (Keep in Endpoint):** If the feature consists of basic CRUD operations, 1-2 straightforward database queries, and simple mapping. If the flow is just "read request -> query DB -> return response", write the logic DIRECTLY inside the `private static async Task<IResult> Handle(...)` method of the nested `Endpoint` class.
@@ -24,8 +30,66 @@ You must decide where to put the business logic based on its complexity:
 - **Validation:** If the endpoint accepts user input (via `[FromBody]`, `[FromQuery]`, route parameters, or `[AsParameters]`), create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator and call `.ValidateAsync(request, ct)`. If validation fails, map the errors using the built-in extension method: `return Results.ValidationProblem(validationResult.ToDictionary());`.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
-## Workflow & Execution
-1. **Plan:** Analyze the request and decide if a separate `Handler` class is needed based on complexity. Output this decision.
-2. **Generate:** Write the complete feature code in a single file based on the rules above.
-3. **Save:** Save the file in the appropriate feature directory requested by the user.
-4. **Verify:** Run `dotnet build` on the project. If there are compiler errors (like missing using directives or type names), read the error, fix the code, and recompile. Maximum 3 attempts. Do NOT auto-commit.
+## Required File Structure (Skeleton)
+You MUST structure the single file exactly like this template:
+
+```csharp
+using FluentValidation;
+using FluentValidation.Results;
+// Include other necessary usings (EF Core, Domain entities, Custom Interfaces)
+
+namespace Inferred.Namespace.Here;
+
+internal static class FeatureName
+{
+    internal sealed record Request(string Data);
+    
+    internal sealed record Response(string Result);
+
+    internal sealed class Validator : AbstractValidator<Request>
+    {
+        public Validator()
+        {
+            // RuleFor(x => x.Data)...
+        }
+    }
+
+    internal sealed class Endpoint : IEndpoint
+    {
+        public void MapEndpoint(IEndpointRouteBuilder app)
+        {
+            app.MapPost("/api/feature-name", Handle)
+                .WithTags("FeatureGroup");
+        }
+
+        private static async Task<IResult> Handle(
+            Request request,
+            Validator validator,
+            // Inject Handler here IF using complex logic, OR inject AppDbContext directly for simple logic
+            Handler handler, 
+            CancellationToken ct)
+        {
+            var validationResult = await validator.ValidateAsync(request, ct);
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
+
+            // Call handler.HandleAsync OR write simple DbContext query here
+            var response = await handler.HandleAsync(request, ct);
+
+            return Results.Ok(response);
+        }
+    }
+    
+    // Include Handler ONLY if logic is complex (see Logic Placement Rule)
+    internal sealed class Handler(AppDbContext db) : IScopedType
+    {
+        public async Task<Response> HandleAsync(Request request, CancellationToken ct)
+        {
+            // Complex domain logic here
+            return new Response("Processed");
+        }
+    }
+}
+```

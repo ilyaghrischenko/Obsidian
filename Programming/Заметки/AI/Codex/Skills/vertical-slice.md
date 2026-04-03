@@ -9,7 +9,7 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 - **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public`.
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
-- **No Repositories:** Do NOT use the Repository pattern. Inject and use the EF Core `DbContext` directly.
+- **No Repositories & DbContext:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
 - **Dependency Injection:** Inject dependencies via `[FromServices]` in the Minimal API endpoint method, or via primary constructor if using a separate Handler class.
 - **Async & Cancellation:** All endpoint methods (`Handle`) and Handler methods MUST be asynchronous (`async Task<...>`, `async Task<IResult>`). You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
 

@@ -1,6 +1,6 @@
 ---
 name: vertical-slice
-description: Scaffolds a new Vertical Slice feature in a single static file using Minimal APIs and direct DbContext.
+description: Use this skill when the user asks to create, generate, build, or scaffold a new API endpoint, feature, or vertical slice in an ASP.NET Core project using Minimal APIs.
 ---
 
 # Vertical Slice Generator

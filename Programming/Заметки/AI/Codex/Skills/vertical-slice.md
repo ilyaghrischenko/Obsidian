@@ -15,8 +15,8 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:
-- **Simple Logic (< 100 lines):** If the feature is a simple query or basic command, write the logic DIRECTLY inside the `private static async Task<IResult> Handle(...)` method of the nested `Endpoint` class.
-- **Complex Logic:** If the feature has complex business rules, validation, or multiple dependencies, extract the logic into a nested class: `internal sealed class Handler(DbContext db, ...) : IScopedType`. Inject this `Handler` into the `Endpoint.Handle` method.
+- **Simple Logic (Keep in Endpoint):** If the feature consists of basic CRUD operations, 1-2 straightforward database queries, and simple mapping. If the flow is just "read request -> query DB -> return response", write the logic DIRECTLY inside the `private static async Task<IResult> Handle(...)` method of the nested `Endpoint` class.
+- **Complex Logic (Extract to Handler):** Extract the logic into a nested `Handler` class ONLY IF the feature requires complex business rules, deeply nested conditions, explicit database transactions, or needs to inject multiple external dependencies (e.g., Email services, external APIs) alongside the `DbContext`. Inject this `Handler` into the `Endpoint.Handle` method.
 
 ## Component Specifications
 - **Endpoint:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`.

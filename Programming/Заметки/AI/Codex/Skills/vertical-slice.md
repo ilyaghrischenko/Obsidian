@@ -20,8 +20,8 @@ You must decide where to put the business logic based on its complexity:
 
 ## Component Specifications
 - **Endpoint:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`.
-- **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler.
-- **Validation:** If the endpoint accepts a payload (`[FromBody]`), create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation.
+- **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always **manually** map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler. Do NOT use AutoMapper, Mapster, or any other mapping libraries.
+- **Validation:** If the endpoint accepts a payload (`[FromBody]`), create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator and call `.ValidateAsync(request, ct)`. If validation fails, return `Results.ValidationProblem(...)`.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
 ## Workflow & Execution

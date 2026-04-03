@@ -131,8 +131,11 @@ internal static class FeatureName
 
             var response = await handler.HandleAsync(request, ct);
             
-            // If using a Result pattern, check success status here before returning Ok
-            return Results.Ok(response);
+            // MAP THE RESPONSE TO THE CORRECT HTTP RESULT HERE.
+            // If using a Result pattern, check its state (e.g., IsSuccess, IsError) 
+            // and map errors to appropriate status codes (400, 404, 409) as defined in AGENTS.md.
+            // If it's a simple DTO, return Results.Ok(response).
+            return Results.Ok(response); // REPLACE THIS LINE with actual mapping logic
         }
     }
     

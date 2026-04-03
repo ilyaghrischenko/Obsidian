@@ -72,8 +72,8 @@ internal static class FeatureName
         }
 
         private static async Task<IResult> Handle(
-            [FromBody] Request request,
-            [FromServices] Validator validator,
+            [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
+            [FromServices] IValidator<Request> validator,
             [FromServices] AppDbContext dbContext,
             CancellationToken ct)
         {
@@ -85,7 +85,8 @@ internal static class FeatureName
 
             // Write simple DbContext query and logic here
 
-            return Results.Ok(new Response("Processed"));
+            // Match the HTTP status code to the operation (e.g., Results.Ok, Results.Created)
+            return Results.Ok(new Response("Processed")); 
         }
     }
 }
@@ -124,8 +125,8 @@ internal static class FeatureName
         }
 
         private static async Task<IResult> Handle(
-            [FromBody] Request request,
-            [FromServices] Validator validator,
+            [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
+            [FromServices] IValidator<Request> validator,
             [FromServices] Handler handler, 
             CancellationToken ct)
         {
@@ -140,13 +141,14 @@ internal static class FeatureName
             // MAP THE RESPONSE TO THE CORRECT HTTP RESULT HERE.
             // If using a Result pattern, check its state (e.g., IsSuccess, IsError) 
             // and map errors to appropriate status codes (400, 404, 409) as defined in AGENTS.md.
-            // If it's a simple DTO, return Results.Ok(response).
+            // If it's a simple DTO, return Results.Ok or Results.Created.
             return Results.Ok(response); // REPLACE THIS LINE with actual mapping logic
         }
     }
     
     internal sealed class Handler(AppDbContext dbContext) : IScopedType
     {
+        // If the project uses a Result pattern, change the return type (e.g., Task<Result<Response>>)
         public async Task<Response> HandleAsync(Request request, CancellationToken ct)
         {
             // Complex domain logic and transaction handling here

@@ -31,7 +31,7 @@ You must decide where to put the business logic based on its complexity:
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
 ## Required File Structure (Skeleton)
-You MUST structure the single file exactly like this template:
+You MUST structure the single file exactly like this template. Choose ONE of the `Handle` method implementations based on the Logic Placement Rule.
 
 ```csharp
 using FluentValidation;
@@ -46,7 +46,8 @@ internal static class FeatureName
     
     internal sealed record Response(string Result);
 
-    internal sealed class Validator : AbstractValidator<Request>
+    // MUST implement IScopedType for DI auto-registration
+    internal sealed class Validator : AbstractValidator<Request>, IScopedType
     {
         public Validator()
         {
@@ -62,11 +63,11 @@ internal static class FeatureName
                 .WithTags("FeatureGroup");
         }
 
+        // OPTION 1: SIMPLE LOGIC (No Handler, direct DbContext injection)
         private static async Task<IResult> Handle(
-            Request request,
-            Validator validator,
-            // Inject Handler here IF using complex logic, OR inject AppDbContext directly for simple logic
-            Handler handler, 
+            [FromBody] Request request,
+            [FromServices] Validator validator,
+            [FromServices] AppDbContext dbContext,
             CancellationToken ct)
         {
             var validationResult = await validator.ValidateAsync(request, ct);
@@ -75,14 +76,33 @@ internal static class FeatureName
                 return Results.ValidationProblem(validationResult.ToDictionary());
             }
 
-            // Call handler.HandleAsync OR write simple DbContext query here
-            var response = await handler.HandleAsync(request, ct);
+            // Simple DbContext query here
+            return Results.Ok(new Response("Processed"));
+        }
 
+        /* OR */
+
+        // OPTION 2: COMPLEX LOGIC (Inject Handler, NO DbContext here)
+        /*
+        private static async Task<IResult> Handle(
+            [FromBody] Request request,
+            [FromServices] Validator validator,
+            [FromServices] Handler handler, 
+            CancellationToken ct)
+        {
+            var validationResult = await validator.ValidateAsync(request, ct);
+            if (!validationResult.IsValid)
+            {
+                return Results.ValidationProblem(validationResult.ToDictionary());
+            }
+
+            var response = await handler.HandleAsync(request, ct);
             return Results.Ok(response);
         }
+        */
     }
     
-    // Include Handler ONLY if logic is complex (see Logic Placement Rule)
+    // Include Handler ONLY if using OPTION 2 (Complex Logic)
     internal sealed class Handler(AppDbContext db) : IScopedType
     {
         public async Task<Response> HandleAsync(Request request, CancellationToken ct)

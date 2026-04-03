@@ -6,7 +6,7 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 # Vertical Slice Generator
 
 ## Architecture & File Structure Rules
-- **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public`.
+- **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public` for types. The ONLY exception is methods implementing interfaces (like `public void MapEndpoint`), which must be `public`.
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories & DbContext:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.

@@ -6,7 +6,8 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 # Vertical Slice Generator
 
 ## Architecture & File Structure Rules
-- **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `public static class FeatureName`.
+- **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public`.
+- **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories:** Do NOT use the Repository pattern. Inject and use the EF Core `DbContext` directly.
 - **Dependency Injection:** Inject dependencies via `[FromServices]` in the Minimal API endpoint method, or via primary constructor if using a separate Handler class.
@@ -14,12 +15,12 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:
 - **Simple Logic (< 100 lines):** If the feature is a simple query or basic command, write the logic DIRECTLY inside the `private static async Task<IResult> Handle(...)` method of the nested `Endpoint` class.
-- **Complex Logic:** If the feature has complex business rules, validation, or multiple dependencies, extract the logic into a nested class: `public sealed class Handler(DbContext db, ...) : IScopedType`. Inject this `Handler` into the `Endpoint.Handle` method.
+- **Complex Logic:** If the feature has complex business rules, validation, or multiple dependencies, extract the logic into a nested class: `internal sealed class Handler(DbContext db, ...) : IScopedType`. Inject this `Handler` into the `Endpoint.Handle` method.
 
 ## Component Specifications
-- **Endpoint:** Create a nested `public sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`.
+- **Endpoint:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`.
 - **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler.
-- **Validation:** If the endpoint accepts a payload (`[FromBody]`), create a nested `public sealed class Validator : AbstractValidator<Request>` using FluentValidation.
+- **Validation:** If the endpoint accepts a payload (`[FromBody]`), create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
 ## Workflow & Execution

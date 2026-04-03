@@ -11,7 +11,7 @@ description: Scaffolds a new Vertical Slice feature in a single static file usin
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories & DbContext:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
 - **Dependency Injection & Auto-Registration:** Inject dependencies via `[FromServices]` in the Minimal API endpoint method, or via primary constructor if using a separate Handler class. Do NOT manually register the Handler or Endpoint in the DI container. The `IScopedType` and `IEndpoint` interfaces handle registration automatically. NEVER modify `Program.cs`.
-- **Async & Cancellation:** All endpoint methods (`Handle`) and Handler methods MUST be asynchronous (`async Task<...>`, `async Task<IResult>`). You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
+- **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
 
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:

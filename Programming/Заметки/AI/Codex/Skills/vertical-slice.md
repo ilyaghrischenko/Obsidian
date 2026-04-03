@@ -27,6 +27,12 @@ You must decide where to put the business logic based on its complexity:
 ## Component Specifications
 - **Endpoint & Routing:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`. You MUST use standard RESTful HTTP methods (GET, POST, PUT, DELETE). Route paths MUST be in `kebab-case` and logically structured (e.g., `/api/user-profiles`). NEVER use PascalCase or camelCase in the URL path. Append `.WithTags("FeatureGroup")` to the endpoint mapping to organize OpenAPI documentation. Infer the tag name from the domain context.
 - **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always **manually** map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler. Do NOT use AutoMapper, Mapster, or any other mapping libraries.
+- **HTTP Status Codes:** You MUST return appropriate HTTP status codes based on the RESTful operation and the execution outcome:
+  - Return `Results.Ok(...)` (200) for successful GET requests or when returning modified data.
+  - Return `Results.Created(...)` (201) for successful POST requests that create a new resource.
+  - Return `Results.NoContent()` (204) for successful DELETE or PUT/PATCH requests that do not return a body.
+  - Return `Results.NotFound()` (404) if a requested entity does not exist in the database.
+  - Return `Results.Conflict(...)` (409) or `Results.BadRequest(...)` (400) for domain rule violations.
 - **Validation:** If the endpoint accepts user input (via `[FromBody]`, `[FromQuery]`, route parameters, or `[AsParameters]`), create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator and call `.ValidateAsync(request, ct)`. If validation fails, map the errors using the built-in extension method: `return Results.ValidationProblem(validationResult.ToDictionary());`.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 

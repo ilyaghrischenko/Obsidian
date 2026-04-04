@@ -149,7 +149,7 @@ internal static class FeatureName
     internal sealed class Handler(AppDbContext db) : IScopedType
     {
         // If the project uses a Result pattern, change the return type (e.g., Task<Result<Response>>)
-        public async Task<Response> HandleAsync(Request request, CancellationToken ct)
+        public async Task<Response> HandleAsync(Request request, CancellationToken cancellationToken)
         {
             // Complex domain logic and transaction handling here
             

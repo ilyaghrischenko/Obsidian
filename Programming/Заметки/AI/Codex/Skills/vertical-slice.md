@@ -74,10 +74,10 @@ internal static class FeatureName
         private static async Task<IResult> Handle(
             [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
             [FromServices] IValidator<Request> validator,
-            [FromServices] AppDbContext dbContext,
-            CancellationToken ct)
+            [FromServices] AppDbContext db,
+            CancellationToken cancellationToken)
         {
-            var validationResult = await validator.ValidateAsync(request, ct);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Results.ValidationProblem(validationResult.ToDictionary());
@@ -128,15 +128,15 @@ internal static class FeatureName
             [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
             [FromServices] IValidator<Request> validator,
             [FromServices] Handler handler, 
-            CancellationToken ct)
+            CancellationToken cancellationToken)
         {
-            var validationResult = await validator.ValidateAsync(request, ct);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Results.ValidationProblem(validationResult.ToDictionary());
             }
 
-            var response = await handler.HandleAsync(request, ct);
+            var response = await handler.HandleAsync(request, cancellationToken);
             
             // MAP THE RESPONSE TO THE CORRECT HTTP RESULT HERE.
             // If using a Result pattern, check its state (e.g., IsSuccess, IsError) 
@@ -146,7 +146,7 @@ internal static class FeatureName
         }
     }
     
-    internal sealed class Handler(AppDbContext dbContext) : IScopedType
+    internal sealed class Handler(AppDbContext db) : IScopedType
     {
         // If the project uses a Result pattern, change the return type (e.g., Task<Result<Response>>)
         public async Task<Response> HandleAsync(Request request, CancellationToken ct)

@@ -33,6 +33,7 @@ You must decide where to put the business logic based on its complexity:
   - Return `Results.NoContent()` (204) for successful DELETE or PUT/PATCH requests that do not return a body.
   - Return `Results.NotFound()` (404) if a requested entity does not exist in the database.
   - Return `Results.Conflict(...)` (409) or `Results.BadRequest(...)` (400) for domain rule violations.
+  - In .Produces() methods use StatusCodes static class, **DO NOT USE HARDCODED STATUS CODE NUMBERS.**
 - **Validation:** If the endpoint accepts user input, create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator as its interface `IValidator<Request>` (NEVER the concrete `Validator` class) and call `.ValidateAsync(request, ct)`. If validation fails, map the errors using: `return Results.ValidationProblem(validationResult.ToDictionary());`.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 
@@ -68,6 +69,8 @@ internal static class FeatureName
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
+                .Produces<Response>()
+                .ProducesValidationProblem()
                 .WithTags("FeatureGroup");
         }
 
@@ -121,6 +124,8 @@ internal static class FeatureName
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
+                .Produces<Response>()
+                .ProducesValidationProblem()
                 .WithTags("FeatureGroup");
         }
 

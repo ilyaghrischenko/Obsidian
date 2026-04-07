@@ -71,6 +71,8 @@ internal static class FeatureName
             app.MapPost("/api/feature-name", Handle)
                 .Produces<Response>()
                 .ProducesValidationProblem()
+                .ProducesProblem(StatusCodes.Status404NotFound)
+                .ProducesProblem(StatusCodes.Status409Conflict)
                 .WithTags("FeatureGroup");
         }
 
@@ -126,6 +128,8 @@ internal static class FeatureName
             app.MapPost("/api/feature-name", Handle)
                 .Produces<Response>()
                 .ProducesValidationProblem()
+                .ProducesProblem(StatusCodes.Status404NotFound)
+                .ProducesProblem(StatusCodes.Status409Conflict)
                 .WithTags("FeatureGroup");
         }
 

@@ -214,6 +214,7 @@ internal static class FeatureName
 
 ## Workflow & Execution
 - **Context Gathering**: Before writing any code, you MUST read the `AGENTS.md` file (if it exists in the project). Explicitly extract the exact `DbContext` name, the `Result` pattern wrapper (if project uses this pattern) (e.g., ErrorOr, FluentResults, custom), custom interfaces, and namespace conventions. Do NOT guess these values.
+- **Reference Search**: Search the 'Features' directory for 1-2 existing vertical slice files of similar complexity to the requested feature. Read these files to analyze the project's actual coding style, naming conventions, and mapping techniques.
 - **Plan**: Analyze the request and decide if a separate Handler class is needed based on complexity. Output this decision.
 - **Generate**: Write the complete feature code in a single file based on the rules above.
 - **Save**: Save the file in the appropriate feature directory requested by the user.

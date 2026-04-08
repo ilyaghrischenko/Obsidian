@@ -72,6 +72,7 @@ internal static class FeatureName
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
+                // adjust type if no Response record
                 .Produces<Response>()
                 .ProducesValidationProblem()
                 .ProducesProblem(StatusCodes.Status404NotFound)
@@ -138,6 +139,7 @@ internal static class FeatureName
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
+                // adjust type if no Response record
                 .Produces<Response>()
                 .ProducesValidationProblem()
                 .ProducesProblem(StatusCodes.Status404NotFound)

@@ -219,3 +219,4 @@ internal static class FeatureName
 - **Generate**: Write the complete feature code in a single file based on the rules above.
 - **Save**: Save the file in the appropriate feature directory requested by the user.
 - **Verify**: Run **dotnet build** on the project. If there are compiler errors (like missing using directives or type names), read the error, fix the code, and recompile. **Maximum 3 attempts**. If the build still fails after the 3rd attempt, you MUST STOP immediately. Do NOT make any further code changes, do NOT guess the solution, and explicitly output the final compilation error message to the user. **Do NOT auto-commit.**
+- **Output Rule (No Yapping)**: Output strictly what is requested in the Plan and Generate steps. Do NOT output conversational filler, polite introductions, explanations of the code, or post-generation summaries.

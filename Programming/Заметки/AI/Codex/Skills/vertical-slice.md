@@ -9,9 +9,10 @@ description: Use this skill when the user asks to create, generate, build, or sc
 - **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public` for types. The ONLY exception is methods implementing interfaces (like `public void MapEndpoint`), which must be `public`.
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
-- **No Repositories & DbContext:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
+- **No Repositories:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
 - **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Do NOT manually register types in `Program.cs`. Ensure the `Handler` (if used) explicitly implements the custom `IScopedType` interface to guarantee automatic DI registration. Do NOT implement `IScopedType` on the `Validator`, as it assumes `services.AddValidatorsFromAssembly()` is configured in the project.
 - **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
+- **Fail-first (Early Return) Pattern:** You MUST use guard clauses and handle all error cases, null checks, and failures first across ALL methods (Endpoints, Handlers, etc.). Return the corresponding error or failure result immediately (e.g., if (entity is null), if (result.IsFailure)). Do not use elseblocks for the main execution path. The successful outcome (e.g.,Results.Ok, Result.Success) MUST be the very last line of the method.
 
 ## Context Fallbacks & Dependencies
 - **DbContext Fallback:** If `AGENTS.md` is missing or you cannot determine the exact `DbContext` name, scan the `Infrastructure` or `Data` directories for a class inheriting from `Microsoft.EntityFrameworkCore.DbContext`. If still not found, halt and ask the user.
@@ -89,9 +90,16 @@ internal static class FeatureName
             }
 
             // Write simple DbContext query and logic here
+            // var entity = await db.Entities.FirstOrDefaultAsync(...);
+
+            // FAIL-FIRST check
+            // if (entity is null)
+            // {
+            //     return Results.NotFound();
+            // }
 
             // Match the HTTP status code to the operation (e.g., Results.Ok, Results.Created)
-            return Results.Ok(new Response("Processed")); 
+            return Results.Ok(new Response("Processed"));
         }
     }
 }
@@ -147,11 +155,23 @@ internal static class FeatureName
 
             var response = await handler.HandleAsync(request, cancellationToken);
             
-            // MAP THE RESPONSE TO THE CORRECT HTTP RESULT HERE.
-            // If using a Result pattern, check its state (e.g., IsSuccess, IsError) 
-            // and map errors to appropriate status codes (400, 404, 409) as defined in AGENTS.md.
-            // If it's a simple DTO, return Results.Ok or Results.Created.
-            return Results.Ok(response); // REPLACE THIS LINE with actual mapping logic
+            // FAIL-FIRST: Handle errors before success
+            
+            // IF using a Result pattern (dictated by AGENTS.md), handle failures like this:
+            // if (response.IsFailure)
+            // {
+            //     return Results.BadRequest(response.ErrorDetails!.ErrorMessage); 
+            // }
+            
+            // IF returning plain DTOs, handle edge cases (e.g., nulls):
+            // if (response is null)
+            // {
+            //     return Results.NotFound();
+            // }
+
+            // SUCCESS: Return the value at the very end
+            // Use response.Value! if using Result pattern, otherwise use response directly
+            return Results.Ok(response);
         }
     }
     

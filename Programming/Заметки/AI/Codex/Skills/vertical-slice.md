@@ -28,6 +28,7 @@ You must decide where to put the business logic based on its complexity:
 ## Component Specifications
 - **Endpoint & Routing:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`. You MUST use standard RESTful HTTP methods (GET, POST, PUT, DELETE). Route paths MUST be in `kebab-case` and logically structured (e.g., `/api/user-profiles`). NEVER use PascalCase or camelCase in the URL path. Append `.WithTags("FeatureGroup")` to the endpoint mapping to organize OpenAPI documentation. Infer the tag name from the domain context.
 - **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always **manually** map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler. Do NOT use AutoMapper, Mapster, or any other mapping libraries. **CRITICAL EXCEPTION:** If the endpoint returns only a single value (e.g., a single string token, an int ID, List<T> items, or a bool), do NOT wrap it in a Response DTO record. Return the type directly (e.g., Results.Ok(token)).
+- **Request Binding:** You MUST strictly follow Minimal API binding rules based on the HTTP method. Use `[FromBody]` for POST, PUT, and PATCH requests. You MUST use `[AsParameters]` for GET and DELETE requests when using a complex `Request` record, because Minimal APIs cannot bind complex types from the request body for these methods by default.
 - **HTTP Status Codes:** You MUST return appropriate HTTP status codes based on the RESTful operation and the execution outcome:
   - Return `Results.Ok(...)` (200) for successful GET requests or when returning modified data.
   - Return `Results.Created(...)` (201) for successful POST requests that create a new resource.
@@ -81,7 +82,7 @@ internal static class FeatureName
         }
 
         private static async Task<IResult> Handle(
-            [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
+            [FromBody] Request request, // Use [AsParameters] instead if this is a GET/DELETE request
             [FromServices] IValidator<Request> validator,
             [FromServices] AppDbContext db,
             CancellationToken cancellationToken)
@@ -156,7 +157,7 @@ internal static class FeatureName
         }
 
         private static async Task<IResult> Handle(
-            [FromBody] Request request, // Use [AsParameters] instead if this is a GET request
+            [FromBody] Request request, // Use [AsParameters] instead if this is a GET/DELETE request
             [FromServices] IValidator<Request> validator,
             [FromServices] Handler handler, 
             CancellationToken cancellationToken)

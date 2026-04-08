@@ -101,8 +101,16 @@ internal static class FeatureName
             //     return Results.NotFound();
             // }
 
-            // Match the HTTP status code to the operation (e.g., Results.Ok, Results.Created)
-            return Results.Ok(new Response("Processed"));
+            // SUCCESS: Match the HTTP status code to the REST operation.
+            // For MapPost (Create):
+            // Note: Replace '{newId}' with the actual ID property of the created entity.
+            return Results.Created($"/api/feature-name/{newId}", new Response("Processed"));
+            
+            // For MapGet / MapPut (Read / Update):
+            // return Results.Ok(new Response("Processed"));
+            
+            // For MapDelete (Delete):
+            // return Results.NoContent();
         }
     }
 }
@@ -175,9 +183,18 @@ internal static class FeatureName
             //     return Results.NotFound();
             // }
 
-            // SUCCESS: Return the value at the very end
-            // Use response.Value! if using Result pattern, otherwise use response directly
-            return Results.Ok(response);
+            // SUCCESS: Match the HTTP status code to the REST operation.
+            // Use response.Value! if using Result pattern, otherwise use response directly.
+            
+            // For MapPost (Create):
+            // Note: Replace '{newId}' with the actual ID property from the response.
+            return Results.Created($"/api/feature-name/{newId}", response);
+            
+            // For MapGet / MapPut (Read / Update):
+            // return Results.Ok(response);
+            
+            // For MapDelete (Delete):
+            // return Results.NoContent();
         }
     }
     

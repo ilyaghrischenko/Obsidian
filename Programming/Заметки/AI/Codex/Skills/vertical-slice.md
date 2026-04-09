@@ -10,7 +10,7 @@ description: Use this skill when the user asks to create, generate, build, or sc
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
-- **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Do NOT manually register types in `Program.cs`. Ensure the `Handler` (if used) explicitly implements the custom `IScopedType` interface to guarantee automatic DI registration. Do NOT implement `IScopedType` on the `Validator`, as it assumes `services.AddValidatorsFromAssembly()` is configured in the project.
+- **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Check AGENTS.md for the project's specific DI registration rules. If the project uses custom marker interfaces for auto-registration (e.g., IScopedType), ensure the Handler (is used) explicitly implements them. Do NOT implement these marker interfaces on the Validator. If there are no auto-registration rules in AGENTS.md, do not implement any extra interfaces on the Handler.
 - **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
 - **Fail-first (Early Return) Pattern:** You MUST use guard clauses and handle all error cases, null checks, and failures first across ALL methods (Endpoints, Handlers, etc.). Return the corresponding error or failure result immediately (e.g., if (entity is null), if (result.IsFailure)). Do not use elseblocks for the main execution path. The successful outcome (e.g.,Results.Ok, Result.Success) MUST be the very last line of the method.
 
@@ -26,7 +26,7 @@ You must decide where to put the business logic based on its complexity:
 - **Complex Logic (Extract to Handler):** Extract the logic into a nested `Handler` class ONLY IF the feature requires complex business rules, deeply nested conditions, explicit database transactions, or needs to inject multiple external dependencies (e.g., Email services, external APIs) alongside the `DbContext`. Inject this `Handler` into the `Endpoint.Handle` method.
 
 ## Component Specifications
-- **Endpoint & Routing:** Create a nested `internal sealed class Endpoint : IEndpoint`. Map the route inside `public void MapEndpoint(IEndpointRouteBuilder app)`. You MUST use standard RESTful HTTP methods (GET, POST, PUT, DELETE). Route paths MUST be in `kebab-case` and logically structured (e.g., `/api/user-profiles`). NEVER use PascalCase or camelCase in the URL path. Append `.WithTags("FeatureGroup")` to the endpoint mapping to organize OpenAPI documentation. Infer the tag name from the domain context.
+- **Endpoint & Routing:** Create a nested `internal sealed class Endpoint`. Check AGENTS.md or the Reference Search to see if endpoints MUST implement a specific interface (e.g., `IEndpoint`, `ICarterModule`). If so, implement it and map the route accordingly. If not, use standard static method extensions for mapping. You MUST use standard RESTful HTTP methods (GET, POST, PUT, DELETE). Route paths MUST be in `kebab-case` and logically structured (e.g., `/api/user-profiles`). NEVER use PascalCase or camelCase in the URL path. Append `.WithTags("FeatureGroup")` to the endpoint mapping to organize OpenAPI documentation. Infer the tag name from the domain context.
 - **Responses & DTOs:** NEVER return raw Domain Entities directly to the client. Always **manually** map complex types to DTOs (e.g., a nested `Response` record) before returning them from the endpoint or handler. Do NOT use AutoMapper, Mapster, or any other mapping libraries. **CRITICAL EXCEPTION:** If the endpoint returns only a single value (e.g., a single string token, an int ID, List<T> items, or a bool), do NOT wrap it in a Response DTO record. Return the type directly (e.g., Results.Ok(token)).
 - **Request Binding:** You MUST strictly follow Minimal API binding rules based on the HTTP method. Use `[FromBody]` for POST, PUT, and PATCH requests. You MUST use `[AsParameters]` for GET and DELETE requests when using a complex `Request` record, because Minimal APIs cannot bind complex types from the request body for these methods by default.
 - **HTTP Status Codes:** You MUST return appropriate HTTP status codes based on the RESTful operation and the execution outcome:
@@ -67,8 +67,8 @@ internal static class FeatureName
             // RuleFor(x => x.Data)...
         }
     }
-
-    internal sealed class Endpoint : IEndpoint
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint)
+    internal sealed class Endpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
@@ -142,8 +142,8 @@ internal static class FeatureName
             // RuleFor(x => x.Data)...
         }
     }
-
-    internal sealed class Endpoint : IEndpoint
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint)
+    internal sealed class Endpoint
     {
         public void MapEndpoint(IEndpointRouteBuilder app)
         {
@@ -198,8 +198,8 @@ internal static class FeatureName
             // return Results.NoContent();
         }
     }
-    
-    internal sealed class Handler(AppDbContext db) : IScopedType
+    // Implement DI marker interface here IF required by AGENTS.md (e.g., : IScopedType)
+    internal sealed class Handler(AppDbContext db)
     {
         // If the project uses a Result pattern, change the return type (e.g., Task<Result<Response>>)
         public async Task<Response> HandleAsync(Request request, CancellationToken cancellationToken)

@@ -89,7 +89,7 @@ internal static class FeatureName
             [FromServices] AppDbContext db,
             CancellationToken cancellationToken)
         {
-            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            ValidationResult validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Results.ValidationProblem(validationResult.ToDictionary());
@@ -166,13 +166,13 @@ internal static class FeatureName
             [FromServices] Handler handler, 
             CancellationToken cancellationToken)
         {
-            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+            ValidationResult validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Results.ValidationProblem(validationResult.ToDictionary());
             }
 
-            var response = await handler.HandleAsync(request, cancellationToken);
+            Response response = await handler.HandleAsync(request, cancellationToken);
             
             // FAIL-FIRST: Handle errors before success
             

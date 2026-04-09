@@ -6,7 +6,7 @@ description: Use this skill when the user asks to create, generate, build, or sc
 # Vertical Slice Generator
 
 ## Architecture & File Structure Rules
-- **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public` for types. The ONLY exception is methods implementing interfaces (like `public void MapEndpoint`), which must be `public`.
+- **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public` for types. The ONLY exception is the endpoint mapping method (e.g., `public void MapEndpoint` or `public static void MapEndpoint`), which must be `public`.
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
@@ -67,10 +67,12 @@ internal static class FeatureName
             // RuleFor(x => x.Data)...
         }
     }
-    // Implement custom interface here IF required by the project (e.g., : IEndpoint)
-    internal sealed class Endpoint
+
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint). must be 'internal sealed class Endpoint : IEndpoint'.
+    internal static class Endpoint
     {
-        public void MapEndpoint(IEndpointRouteBuilder app)
+        // IF using an interface, change the map method to 'public void MapEndpoint(IEndpointRouteBuilder app)'.
+        public static void MapEndpoint(this IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
                 // adjust type if no Response record
@@ -142,10 +144,12 @@ internal static class FeatureName
             // RuleFor(x => x.Data)...
         }
     }
-    // Implement custom interface here IF required by the project (e.g., : IEndpoint)
-    internal sealed class Endpoint
+
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint). must be 'internal sealed class Endpoint : IEndpoint'.
+    internal static class Endpoint
     {
-        public void MapEndpoint(IEndpointRouteBuilder app)
+        // IF using an interface, change the map method to 'public void MapEndpoint(IEndpointRouteBuilder app)'.
+        public static void MapEndpoint(this IEndpointRouteBuilder app)
         {
             app.MapPost("/api/feature-name", Handle)
                 // adjust type if no Response record

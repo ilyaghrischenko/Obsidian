@@ -68,7 +68,7 @@ internal static class FeatureName
         }
     }
 
-    // Implement custom interface here IF required by the project (e.g., : IEndpoint). must be 'internal sealed class Endpoint : IEndpoint'.
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint). In than case Endpoint class must be 'internal sealed class Endpoint : IEndpoint'.
     internal static class Endpoint
     {
         // IF using an interface, change the map method to 'public void MapEndpoint(IEndpointRouteBuilder app)'.
@@ -145,7 +145,7 @@ internal static class FeatureName
         }
     }
 
-    // Implement custom interface here IF required by the project (e.g., : IEndpoint). must be 'internal sealed class Endpoint : IEndpoint'.
+    // Implement custom interface here IF required by the project (e.g., : IEndpoint). In than case Endpoint class must be 'internal sealed class Endpoint : IEndpoint'.
     internal static class Endpoint
     {
         // IF using an interface, change the map method to 'public void MapEndpoint(IEndpointRouteBuilder app)'.

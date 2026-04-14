@@ -245,7 +245,7 @@ After the user approves the plan, the FIRST action before writing any code is to
 **Branch creation procedure:**
 1. Use the GitHub MCP tool to retrieve the current SHA of the `develop` branch HEAD. If the `develop` branch does not exist in the repository, **STOP immediately** and ask the user which base branch to use. Do NOT fall back to `main` or `master` silently.
 2. Use the GitHub MCP tool to create the new branch from that SHA.
-3. Confirm the branch was created successfully before proceeding to code generation. If creation fails, STOP and report the error to the user.
+3. Using the **git CLI**: run `git fetch origin && git checkout feature/<branch-name>` to switch to the newly created remote branch locally. Do NOT use `git checkout -b` — the branch already exists on the remote and `-b` will fail. If the checkout fails, STOP and report the error to the user.
 
 ### Step 5 — Generate
 Write the complete feature code in a single file following all rules above.

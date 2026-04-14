@@ -218,11 +218,54 @@ internal static class FeatureName
 ```
 
 ## Workflow & Execution
-- **Context Gathering**: Before writing any code, you MUST read the `AGENTS.md` file (if it exists in the project). Explicitly extract the exact `DbContext` name, the `Result` pattern wrapper (if project uses this pattern) (e.g., ErrorOr, FluentResults, custom), custom interfaces, and namespace conventions. Do NOT guess these values.
-- **Reference Search**: Before searching, identify exactly what you do NOT yet know after reading `AGENTS.md`: specific naming conventions, Result pattern usage, or mapping style. Then read the **minimum number of 
-existing feature files** needed to answer only those specific open questions — targeting files of similar complexity to the requested feature. Do NOT read files to confirm what you already know. Do NOT explore the Features directory broadly. Each file read requires a stated justification: *"I am reading this file because I still don't know X."* Stop as soon as all open questions are answered.
-- **Plan**: Analyze the request and decide if a separate Handler class is needed based on complexity. Output this decision.
-- **Generate**: Write the complete feature code in a single file based on the rules above.
-- **Save**: Save the file in the appropriate feature directory requested by the user.
-- **Verify**: Run **dotnet build** on the project. If there are compiler errors (like missing using directives or type names), read the error, fix the code, and recompile. **Maximum 3 attempts**. If the build still fails after the 3rd attempt, you MUST STOP immediately. Do NOT make any further code changes, do NOT guess the solution, and explicitly output the final compilation error message to the user. **Do NOT auto-commit.**
-- **Output Rule (No Yapping)**: Output strictly what is requested in the Plan and Generate steps. Do NOT output conversational filler, polite introductions, explanations of the code, or post-generation summaries.
+
+### Step 1 — Context Gathering
+Before writing any code, you MUST read the `AGENTS.md` file (if it exists in the project). Explicitly extract the exact `DbContext` name, the `Result` pattern wrapper (e.g., ErrorOr, FluentResults, custom), custom interfaces, and namespace conventions. Do NOT guess these values.
+
+### Step 2 — Reference Search
+Before searching, identify exactly what you do NOT yet know after reading `AGENTS.md`: specific naming conventions, Result pattern usage, or mapping style. Then read the **minimum number of existing feature files** needed to answer only those specific open questions — targeting files of similar complexity to the requested feature. Do NOT read files to confirm what you already know. Do NOT explore the Features directory broadly. Each file read requires a stated justification: *"I am reading this file because I still don't know X."* Stop as soon as all open questions are answered.
+
+### Step 3 — Plan
+Analyze the request and decide if a separate Handler class is needed based on complexity. Output the plan, including:
+- The target file path for the new slice.
+- The chosen skeleton (Simple or Complex).
+- The derived branch name (see Step 4 for naming rules).
+
+**STOP HERE and wait for explicit user approval before proceeding.**
+
+### Step 4 — Create Feature Branch (after plan approval)
+After the user approves the plan, the FIRST action before writing any code is to create and switch to a new Git branch.
+
+**Branch naming rules:**
+- Format: `feature/<action>-<domain>` in kebab-case.
+- Derive `<action>` from the slice file name (e.g., `Create.cs` → `create`, `GetById.cs` → `get-by-id`).
+- Derive `<domain>` from the feature folder name (e.g., `Admin` → `admin`, `UserProfiles` → `user-profiles`).
+- Example: slice `Create.cs` inside folder `Admin` → branch `feature/create-admin`.
+
+**Branch creation procedure:**
+1. Use the GitHub MCP tool to retrieve the current SHA of the `develop` branch HEAD. If the `develop` branch does not exist in the repository, **STOP immediately** and ask the user which base branch to use. Do NOT fall back to `main` or `master` silently.
+2. Use the GitHub MCP tool to create the new branch from that SHA.
+3. Confirm the branch was created successfully before proceeding to code generation. If creation fails, STOP and report the error to the user.
+
+### Step 5 — Generate
+Write the complete feature code in a single file following all rules above.
+
+### Step 6 — Save, Commit & Push
+1. Save the file to the appropriate feature directory.
+2. Using the **git CLI** (not GitHub MCP): stage and commit the file directly to the new feature branch with a clear, conventional commit message. Use the format: `feat(<domain>): add <action> slice` (e.g., `feat(admin): add create slice`).
+3. Using the **git CLI**: push the branch to the remote origin. If the push fails, STOP and report the error to the user. Do NOT proceed to Step 7.
+
+### Step 7 — Build & Verify
+Run `dotnet build` on the project. If there are compiler errors (missing using directives, type name mismatches, etc.), read the error, fix the code, commit the fix with message `fix(<domain>): resolve build error in <action> slice`, and recompile. **Maximum 3 attempts.** If the build still fails after the 3rd attempt, you MUST STOP immediately. Do NOT make further code changes, do NOT guess the solution. Output the final compilation error to the user for manual intervention.
+
+### Step 8 — Create Pull Request
+After a successful build, use the GitHub MCP tool to create a Pull Request:
+- **Base branch:** `develop`
+- **Head branch:** the feature branch created in Step 4.
+- **Title:** `feat(<domain>): <action> slice` (e.g., `feat(admin): create slice`).
+- **Body:** a short description of what the slice does, which HTTP method and route it exposes, and whether a Handler was used.
+
+Output only the PR URL. Do NOT add conversational filler.
+
+### Output Rule (No Yapping)
+Output strictly what is requested in each step. Do NOT output conversational filler, polite introductions, explanations of the code, or post-generation summaries.

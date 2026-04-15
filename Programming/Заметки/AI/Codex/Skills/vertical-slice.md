@@ -42,6 +42,7 @@ You must decide where to put the business logic based on its complexity:
   - In .Produces() methods use StatusCodes static class, **DO NOT USE HARDCODED STATUS CODE NUMBERS.**
 - **Validation:** If the endpoint accepts user input, create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator as its interface `IValidator<Request>` (NEVER the concrete `Validator` class) and call `.ValidateAsync(request, ct)`. If validation fails, map the errors using: `return Results.ValidationProblem(validationResult.ToDictionary());`. When validating nested required objects: first assert `.NotNull()` on the parent property, then chain nested rules directly with `.ChildRules(...)` or `.SetValidator(...)`. Do NOT wrap nested rules in `.When(x => x.NestedObject is not null)` — the `NotNull()` check already communicates the requirement; the `When` guard is redundant noise and obscures intent.
 - **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
+- **Exception handling:** `catch { }` block must have logging. If logging method not specified in `AGENTS.md` use basic `Console.WriteLine()`.
 
 ## Required File Structure (Skeleton)
 You MUST structure the file exactly like one of the following templates. Choose the appropriate skeleton based on the Logic Placement Rule.

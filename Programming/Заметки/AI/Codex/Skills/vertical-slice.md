@@ -252,16 +252,20 @@ the FIRST action before writing any code is to create and switch to a new Git br
 ### Step 5 — Generate
 Write the complete feature code in a single file following all rules above.
 
-### Step 6 — Save, Commit & Push
-1. Save the file to the appropriate feature directory.
-2. Using the **git CLI** (not GitHub MCP): stage and commit the file directly to the new feature branch with a clear, conventional commit message. Use the format: `feat(<domain>): add <action> slice` (e.g., `feat(admin): add create slice`).
-3. Using the **git CLI**: push the branch to the remote origin. If the push fails, STOP and report the error to the user. Do NOT proceed to Step 7.
+### Step 6 — Save & Build (STRICT ORDER)
+1. Save the generated file to the appropriate feature directory.
+2. Verify the code compiles by running the build command on the specific project file (NOT the whole solution unless necessary). You MUST use this exact command to avoid context overflow:
+`dotnet build <PathToTargetProject.csproj> /clp:ErrorsOnly -v q`
+If there are compiler errors (missing using directives, type name mismatches, etc.), read the concise error output, fix the code, save the file, and recompile. 
+**Maximum 3 attempts.** If the build still fails after the 3rd attempt, you MUST STOP immediately. Do NOT make further code changes, do NOT commit, do NOT push. Output the final compilation error to the user for manual intervention.
 
-### Step 7 — Build & Verify
-Run `dotnet build` on the project. If there are compiler errors (missing using directives, type name mismatches, etc.), read the error, fix the code, commit the fix with message `fix(<domain>): resolve build error in <action> slice`, and recompile. **Maximum 3 attempts.** If the build still fails after the 3rd attempt, you MUST STOP immediately. Do NOT make further code changes, do NOT guess the solution. Output the final compilation error to the user for manual intervention.
+### Step 7 — Commit & Push
+Proceed to this step ONLY if Step 6 succeeded with zero build errors.
+1. Using the **git CLI** (not GitHub MCP): stage and commit the file directly to the new feature branch with a clear, conventional commit message. Use the format: `feat(<domain>): add <action> slice`.
+2. Using the **git CLI**: push the branch to the remote origin. If the push fails, STOP and report the error.
 
 ### Step 8 — Create Pull Request
-After a successful build, use the GitHub MCP tool to create a Pull Request:
+After a successful push, use the GitHub MCP tool to create a Pull Request:
 - **Base branch:** the base branch read from `AGENTS.md` in Step 4.
 - **Head branch:** the feature branch created in Step 4.
 - **Title:** `feat(<domain>): <action> slice` (e.g., `feat(admin): create slice`).

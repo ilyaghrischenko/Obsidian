@@ -5,6 +5,9 @@ description: Use this skill when the user asks to create, generate, build, or sc
 
 # Vertical Slice Generator
 
+## Output Rule (No Yapping)
+Output strictly what is requested in each step. Do NOT output conversational filler, polite introductions, explanations of the code, or post-generation summaries.
+
 ## Architecture & File Structure Rules
 - **Access Modifiers:** All generated types (the main slice class, Request/Response DTOs, Validator, Endpoint, and Handler) MUST be strictly `internal`. Do NOT use `public` for types. The ONLY exception is the endpoint mapping method (e.g., `public void MapEndpoint` or `public static void MapEndpoint`), which must be `public`.
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
@@ -12,14 +15,14 @@ description: Use this skill when the user asks to create, generate, build, or sc
 - **No Repositories:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
 - **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Check AGENTS.md for the project's specific DI registration rules. If the project uses custom marker interfaces for auto-registration (e.g., IScopedType), ensure the Handler (is used) explicitly implements them. Do NOT implement these marker interfaces on the Validator. If there are no auto-registration rules in AGENTS.md, do not implement any extra interfaces on the Handler.
 - **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
-- **Fail-first (Early Return) Pattern:** You MUST use guard clauses and handle all error cases, null checks, and failures first across ALL methods (Endpoints, Handlers, etc.), including **every intermediate operation inside a Handler** — not only the entry-point validation. The rule is: **check for the negative/failure condition, return early, then continue**. NEVER invert this: do NOT write `if (operation succeeded) { return success; }` — that is structurally backwards. Return the corresponding failure immediately and let the success path fall through to the last line. The successful outcome MUST be the very last statement of the method.
+- **Fail-first (Early Return) Pattern:** You MUST use guard clauses and handle all error cases, null checks, and failures first across ALL methods (Endpoints, Handlers, etc.), including **every intermediate operation inside a Handler** — not only the entry-point validation. The rule is: **check for the negative/failure condition, return early, then continue**. NEVER invert this: do NOT write `if (operation succeeded) { return success; }`. Return the corresponding failure immediately and let the success path fall through to the last line. The successful outcome MUST be the very last statement of the method.
 
 ## Context Fallbacks & Dependencies
 - **DbContext Fallback:** If `AGENTS.md` is missing or you cannot determine the exact `DbContext` name, scan the `Infrastructure` or `Data` directories for a class inheriting from `Microsoft.EntityFrameworkCore.DbContext`. If still not found, halt and ask the user.
 - **Mandatory Usings:** You MUST include `using FluentValidation;` and `using FluentValidation.Results;` (the latter is strictly required for the `.ToDictionary()` extension method).
-- **Custom Interfaces:** For the custom `IScopedType` and `IEndpoint` interfaces, infer their namespaces by scanning the project (usually in a Shared, Core, or Infrastructure building block). If you cannot find them, explicitly ask the user before generating the code.
+- **Custom Interfaces:** Read interface namespaces from `AGENTS.md`. If absent, ask the user.
 - **Result Pattern & Error Handling:** The specific implementation of the Result pattern (e.g., `ErrorOr`, `FluentResults`, or custom wrappers) and how to map them to HTTP status codes MUST be obtained from the project's `AGENTS.md`. If missing, assume a standard generic wrapper. Do NOT blindly return HTTP 200 OK if a Handler returns a Result object containing an error. **CRITICAL: Only use the Result pattern when interacting with a `Handler`. For Simple Logic (Skeleton 1) where you query the DbContext directly, do NOT wrap the outcome in a Result pattern; just return the DTO directly (e.g., `Results.Ok(dto)`).**
-- **Result Propagation (Failure pass-through):** When a `Handler` calls a nested operation that itself returns a `Result<T>` (e.g., a domain service or another handler method), and that operation fails, you MUST return the result object directly: `return someResult;`. Rely on the project's implicit conversion from `Result<T>` to `Result` (or `Result<TOther>`). Do NOT re-wrap the failure: `return Result.Failure(someResult)` is **always wrong** — it double-wraps the error and loses the original error details. The only place you construct a new `Result.Failure(...)` is when you are **originating** a new error at that call site, not propagating one from below.
+- **Result Propagation (Failure pass-through):** If a nested operation returns a failed Result, propagate it as-is: `return someResult;`. Never wrap it: `return Result.Failure(someResult);` is always wrong.
 
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:
@@ -231,8 +234,8 @@ Analyze the request and decide if a separate Handler class is needed based on co
 - The chosen skeleton (Simple or Complex).
 - The derived branch name (see Step 4 for naming rules).
 
-### Step 4 — Create Feature Branch (after plan approval)
-After the user approves the plan, the FIRST action before writing any code is to create and switch to a new Git branch.
+### Step 4 — Create Feature Branch
+the FIRST action before writing any code is to create and switch to a new Git branch. If GitHub MCP is unavailable, use git CLI only: `git checkout -b feature/<name>` && `git push -u origin HEAD`.
 
 **Branch naming rules:**
 - Format: `feature/<action>-<domain>` in kebab-case.
@@ -241,9 +244,10 @@ After the user approves the plan, the FIRST action before writing any code is to
 - Example: slice `Create.cs` inside folder `Admin` → branch `feature/create-admin`.
 
 **Branch creation procedure:**
-1. Use the GitHub MCP tool to retrieve the current SHA of the `develop` branch HEAD. If the `develop` branch does not exist in the repository, **STOP immediately** and ask the user which base branch to use. Do NOT fall back to `main` or `master` silently.
-2. Use the GitHub MCP tool to create the new branch from that SHA.
-3. Using the **git CLI**: run `git fetch origin && git checkout feature/<branch-name>` to switch to the newly created remote branch locally. Do NOT use `git checkout -b` — the branch already exists on the remote and `-b` will fail. If the checkout fails, STOP and report the error to the user.
+1. Read the base branch name from `AGENTS.md` (required field: Develop branch name). If absent, ask the user before proceeding. Do NOT fall back to `main` or `master` silently.
+2. Use the GitHub MCP tool to retrieve the current SHA of the base branch HEAD.
+3. Use the GitHub MCP tool to create the new branch from that SHA.
+4. Using the **git CLI**: run `git fetch origin && git checkout feature/<branch-name>` to switch to the newly created remote branch locally. Do NOT use `git checkout -b` — the branch already exists on the remote and `-b` will fail. If the checkout fails, STOP and report the error to the user.
 
 ### Step 5 — Generate
 Write the complete feature code in a single file following all rules above.
@@ -258,12 +262,9 @@ Run `dotnet build` on the project. If there are compiler errors (missing using d
 
 ### Step 8 — Create Pull Request
 After a successful build, use the GitHub MCP tool to create a Pull Request:
-- **Base branch:** `develop`
+- **Base branch:** the base branch read from `AGENTS.md` in Step 4.
 - **Head branch:** the feature branch created in Step 4.
 - **Title:** `feat(<domain>): <action> slice` (e.g., `feat(admin): create slice`).
 - **Body:** a short description of what the slice does, which HTTP method and route it exposes, and whether a Handler was used.
 
 Output only the PR URL. Do NOT add conversational filler.
-
-### Output Rule (No Yapping)
-Output strictly what is requested in each step. Do NOT output conversational filler, polite introductions, explanations of the code, or post-generation summaries.

@@ -245,7 +245,7 @@ the FIRST action before writing any code is to create and switch to a new Git br
 - Example: slice `Create.cs` inside folder `Admin` → branch `feature/create-admin`.
 
 **Branch creation procedure:**
-1. Read the base branch name from `AGENTS.md` (required field: Develop branch name). If absent, ask the user before proceeding. Do NOT fall back to `main` or `master` silently.
+1. Read the base branch name from `AGENTS.md` (required fields: Develop branch name, GitHub Owner, GitHub Repo). If absent, ask the user before proceeding. Do NOT fall back to `main` or `master` silently.
 2. Use the GitHub MCP tool to retrieve the current SHA of the base branch HEAD.
 3. Use the GitHub MCP tool to create the new branch from that SHA.
 4. Using the **git CLI**: run `git fetch origin && git checkout feature/<branch-name>` to switch to the newly created remote branch locally. Do NOT use `git checkout -b` — the branch already exists on the remote and `-b` will fail. If the checkout fails, STOP and report the error to the user.

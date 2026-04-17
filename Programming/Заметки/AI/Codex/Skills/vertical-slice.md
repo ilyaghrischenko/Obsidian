@@ -13,7 +13,7 @@ Output strictly what is requested in each step. Do NOT output conversational fil
 - **Single File:** The entire feature (Request, Response, Validator, Endpoint, and optionally Handler) MUST be enclosed within a single `internal static class FeatureName`.
 - **MediatR is FORBIDDEN:** Do NOT use `IMediator` or `IRequestHandler`.
 - **No Repositories:** Do NOT use the Repository pattern. Inject the specific application DbContext (e.g., `AppDbContext`), NEVER the base `Microsoft.EntityFrameworkCore.DbContext`. Obtain the exact DbContext class name from the project's `AGENTS.md` context or the user's prompt.
-- **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Check AGENTS.md for the project's specific DI registration rules. If the project uses custom marker interfaces for auto-registration (e.g., IScopedType), ensure the Handler (is used) explicitly implements them. Do NOT implement these marker interfaces on the Validator. If there are no auto-registration rules in AGENTS.md, do not implement any extra interfaces on the Handler.
+- **Dependency Injection & Auto-Registration:** You MUST explicitly use the `[FromServices]` attribute for ALL application services injected into the Minimal API `Handle` method parameters (e.g., `[FromServices] IValidator<Request> validator`, `[FromServices] AppDbContext db`, `[FromServices] Handler handler`). **CRITICAL EXCEPTION:** Do NOT use `[FromServices]` on framework-provided parameters such as `CancellationToken`, `HttpContext`, or `ClaimsPrincipal` — they are resolved automatically. Do NOT rely on implicit DI resolution for your custom services. Check AGENTS.md for the project's specific DI registration rules. If the project uses custom marker interfaces for auto-registration (e.g., IScopedType), ensure the Handler (if used) explicitly implements them. Do NOT implement these marker interfaces on the Validator. If there are no auto-registration rules in AGENTS.md, do not implement any extra interfaces on the Handler.
 - **Async & Cancellation:** All endpoint and Handler methods MUST be asynchronous. The Endpoint's `Handle` method MUST return `Task<IResult>`. The `Handler` (if used) MUST NOT return `IResult` directly; it should return a domain outcome (e.g., a DTO or a Result pattern) as defined by the project's `AGENTS.md`. You MUST inject a `CancellationToken` into the entry point and pass it down to ALL asynchronous operations (especially EF Core database calls).
 - **Fail-first (Early Return) Pattern:** You MUST use guard clauses and handle all error cases, null checks, and failures first across ALL methods (Endpoints, Handlers, etc.), including **every intermediate operation inside a Handler** — not only the entry-point validation. The rule is: **check for the negative/failure condition, return early, then continue**. NEVER invert this: do NOT write `if (operation succeeded) { return success; }`. Return the corresponding failure immediately and let the success path fall through to the last line. The successful outcome MUST be the very last statement of the method.
 
@@ -41,7 +41,6 @@ You must decide where to put the business logic based on its complexity:
   - Return `Results.Conflict(...)` (409) or `Results.BadRequest(...)` (400) for domain rule violations.
   - In .Produces() methods use StatusCodes static class, **DO NOT USE HARDCODED STATUS CODE NUMBERS.**
 - **Validation:** If the endpoint accepts user input, create a nested `internal sealed class Validator : AbstractValidator<Request>` using FluentValidation. You MUST inject the Validator as its interface `IValidator<Request>` (NEVER the concrete `Validator` class) and call `.ValidateAsync(request, ct)`. If validation fails, map the errors using: `return Results.ValidationProblem(validationResult.ToDictionary());`. When validating nested required objects: first assert `.NotNull()` on the parent property, then chain nested rules directly with `.ChildRules(...)` or `.SetValidator(...)`. Do NOT wrap nested rules in `.When(x => x.NestedObject is not null)` — the `NotNull()` check already communicates the requirement; the `When` guard is redundant noise and obscures intent.
-- **Namespaces:** Infer the correct namespace from the project structure. Do NOT hardcode namespaces. Include any domain-specific standard usings found in the project.
 - **Exception handling:** `catch { }` block must have logging. If logging method not specified in `AGENTS.md` use basic `Console.WriteLine()`.
 
 ## Required File Structure (Skeleton)
@@ -110,15 +109,11 @@ internal static class FeatureName
             // }
 
             // SUCCESS: Match the HTTP status code to the REST operation.
-            // For MapPost (Create):
-            // Note: Replace '{newId}' with the actual ID property of the created entity.
-            return Results.Created($"/api/feature-name/{newId}", new Response("Processed"));
-            
-            // For MapGet / MapPut (Read / Update):
-            // return Results.Ok(new Response("Processed"));
-            
-            // For MapDelete (Delete):
-            // return Results.NoContent();
+            // Choose ONE return based on the HTTP method:
+            // POST (Create):  return Results.Created();
+            // GET/PUT:        return Results.Ok(response);
+            // DELETE:         return Results.NoContent();
+            return Results.Created(); // ← активный, замени если нужно
         }
     }
 }
@@ -195,15 +190,11 @@ internal static class FeatureName
             // If using a Result pattern, unwrap the value per the project's Result API (per AGENTS.md).
             // Otherwise use response directly.
             
-            // For MapPost (Create):
-            // Note: Replace '{newId}' with the actual ID property from the response.
-            return Results.Created($"/api/feature-name/{newId}", response);
-            
-            // For MapGet / MapPut (Read / Update):
-            // return Results.Ok(response);
-            
-            // For MapDelete (Delete):
-            // return Results.NoContent();
+            /// Choose ONE return based on the HTTP method:
+            // POST (Create):  return Results.Created();
+            // GET/PUT:        return Results.Ok(response);
+            // DELETE:         return Results.NoContent();
+            return Results.Created(); // ← активный, замени если нужно
         }
     }
     // Implement DI marker interface here IF required by AGENTS.md (e.g., : IScopedType)
@@ -235,7 +226,7 @@ Analyze the request and decide if a separate Handler class is needed based on co
 - The derived branch name (see Step 4 for naming rules).
 
 ### Step 4 — Create Feature Branch
-the FIRST action before writing any code is to create and switch to a new Git branch. If GitHub MCP is unavailable, use git CLI only: `git checkout -b feature/<name>` && `git push -u origin HEAD`.
+The FIRST action before writing any code is to create and switch to a new Git branch. If GitHub MCP is unavailable, ask the user before proceeding — do NOT create the branch via CLI alone, as the full procedure requires MCP.
 
 **Branch naming rules:**
 - Format: `feature/<action>-<domain>` in kebab-case.

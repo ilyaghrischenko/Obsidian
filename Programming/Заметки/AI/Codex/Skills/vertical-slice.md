@@ -22,7 +22,7 @@ Output strictly what is requested in each step. Do NOT output conversational fil
 - **Mandatory Usings:** You MUST include `using FluentValidation;` and `using FluentValidation.Results;` (the latter is strictly required for the `.ToDictionary()` extension method).
 - **Custom Interfaces:** Read interface namespaces from `AGENTS.md`. If absent, ask the user.
 - **Result Pattern & Error Handling:** The specific implementation of the Result pattern (e.g., `ErrorOr`, `FluentResults`, or custom wrappers) and how to map them to HTTP status codes MUST be obtained from the project's `AGENTS.md`. If missing, do NOT use a Result pattern. Return DTOs directly from the Handler. In the Endpoint, handle failure by checking for null (e.g., `if (response is null) return Results.NotFound();`). Do NOT blindly return HTTP 200 OK if a Handler returns a Result object containing an error. **CRITICAL: Only use the Result pattern when interacting with a `Handler`. For Simple Logic (Skeleton 1) where you query the DbContext directly, do NOT wrap the outcome in a Result pattern; just return the DTO directly (e.g., `Results.Ok(dto)`).**
-- **Result Propagation (Failure pass-through):** If a nested operation returns a failed Result, propagate it as-is: `return someResult;`. Never wrap it: `return Result.Failure(someResult);` is always wrong.
+- **Result Propagation (Failure pass-through):** *(Apply only if the project uses a Result pattern as defined in `AGENTS.md`.)* When propagating a failure from a nested call, return the failed result as-is. Do NOT re-wrap it into a new failure object — that double-wraps the error. Construct a new failure object only when originating a new error at that call site, not when propagating one from below.
 
 ## Logic Placement Rule (Endpoint vs. Handler)
 You must decide where to put the business logic based on its complexity:
@@ -181,20 +181,19 @@ internal static class FeatureName
             
             // FAIL-FIRST: Handle errors before success
             
-            // IF using a Result pattern (dictated by AGENTS.md), handle failures like this:
-            // if (response.IsFailure)
-            // {
-            //     return Results.BadRequest(response.ErrorDetails!.ErrorMessage); 
-            // }
+            // If using a Result pattern (per AGENTS.md), check for failure here using
+            // the project's Result API and return the appropriate HTTP error response
+            // before reaching the success path.
             
-            // IF returning plain DTOs, handle edge cases (e.g., nulls):
+            // If returning plain DTOs, handle edge cases (e.g., nulls):
             // if (response is null)
             // {
             //     return Results.NotFound();
             // }
 
             // SUCCESS: Match the HTTP status code to the REST operation.
-            // Use response.Value! if using Result pattern, otherwise use response directly.
+            // If using a Result pattern, unwrap the value per the project's Result API (per AGENTS.md).
+            // Otherwise use response directly.
             
             // For MapPost (Create):
             // Note: Replace '{newId}' with the actual ID property from the response.
@@ -210,7 +209,7 @@ internal static class FeatureName
     // Implement DI marker interface here IF required by AGENTS.md (e.g., : IScopedType)
     internal sealed class Handler(AppDbContext db)
     {
-        // If the project uses a Result pattern, change the return type (e.g., Task<Result<Response>>)
+        // If the project uses a Result pattern, update the return type accordingly (per AGENTS.md).
         public async Task<Response> HandleAsync(Request request, CancellationToken cancellationToken)
         {
             // Complex domain logic and transaction handling here
